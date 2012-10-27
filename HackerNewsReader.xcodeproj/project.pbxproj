@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A68617F1162B87A900090B71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68617F0162B87A900090B71 /* UIKit.framework */; };
+		A68617F3162B87A900090B71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68617F2162B87A900090B71 /* Foundation.framework */; };
+		A68617F5162B87A900090B71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68617F4162B87A900090B71 /* CoreGraphics.framework */; };
+		A68617FB162B87A900090B71 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A68617F9162B87A900090B71 /* InfoPlist.strings */; };
+		A68617FD162B87A900090B71 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A68617FC162B87A900090B71 /* main.m */; };
+		A6861801162B87A900090B71 /* SEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6861800162B87A900090B71 /* SEAppDelegate.m */; };
+		A6861803162B87A900090B71 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A6861802162B87A900090B71 /* Default.png */; };
+		A6861805162B87A900090B71 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6861804162B87A900090B71 /* Default@2x.png */; };
+		A6861807162B87A900090B71 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6861806162B87A900090B71 /* Default-568h@2x.png */; };
+		A6861813162B87CE00090B71 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6861810162B87CE00090B71 /* ECSlidingViewController.m */; };
+		A6861814162B87CE00090B71 /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6861812162B87CE00090B71 /* UIImage+ImageWithUIView.m */; };
+		A6861818162B880200090B71 /* SEInitialSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6861817162B880200090B71 /* SEInitialSlidingViewController.m */; };
+		A686181A162B881700090B71 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6861819162B881700090B71 /* iPhone.storyboard */; };
+		A686181D162B883D00090B71 /* SEMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A686181C162B883D00090B71 /* SEMenuViewController.m */; };
+		A6861820162B885A00090B71 /* SEFrontNavigationTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A686181F162B885A00090B71 /* SEFrontNavigationTopViewController.m */; };
+		A6861822162B8CFD00090B71 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6861821162B8CFD00090B71 /* QuartzCore.framework */; };
+		A6861825162B930F00090B71 /* SEFrontTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6861824162B930E00090B71 /* SEFrontTableViewController.m */; };
+		A6861828162B94FF00090B71 /* SENewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A6861827162B94FF00090B71 /* SENewsItem.m */; };
+		A686182F162BBA5300090B71 /* SEWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A686182E162BBA5200090B71 /* SEWebViewController.m */; };
+		A6861836162D06BA00090B71 /* SENewsItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6861835162D06BA00090B71 /* SENewsItemTableViewCell.m */; };
+		A686183E162E4F6000090B71 /* SENewsItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A686183D162E4F6000090B71 /* SENewsItemViewController.m */; };
+		A6861844162FDA0F00090B71 /* SENewsItemTopWebCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6861843162FDA0F00090B71 /* SENewsItemTopWebCell.m */; };
+		A686185B1636547200090B71 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686184516364C3D00090B71 /* Roboto-Black.ttf */; };
+		A686185C1636547200090B71 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686184616364C3D00090B71 /* Roboto-BlackItalic.ttf */; };
+		A686185D1636547200090B71 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686184716364C3D00090B71 /* Roboto-Bold.ttf */; };
+		A686185E1636547200090B71 /* Roboto-BoldCondensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686184816364C3D00090B71 /* Roboto-BoldCondensed.ttf */; };
+		A686185F1636547200090B71 /* Roboto-BoldCondensedItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686184916364C3D00090B71 /* Roboto-BoldCondensedItalic.ttf */; };
+		A68618601636547200090B71 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686184A16364C3E00090B71 /* Roboto-BoldItalic.ttf */; };
+		A68618611636547200090B71 /* Roboto-Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686184B16364C3E00090B71 /* Roboto-Condensed.ttf */; };
+		A68618621636547200090B71 /* Roboto-CondensedItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686184C16364C3E00090B71 /* Roboto-CondensedItalic.ttf */; };
+		A68618631636547200090B71 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686184D16364C3E00090B71 /* Roboto-Italic.ttf */; };
+		A68618641636547200090B71 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686184E16364C3E00090B71 /* Roboto-Light.ttf */; };
+		A68618651636547200090B71 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686184F16364C3E00090B71 /* Roboto-LightItalic.ttf */; };
+		A68618661636547200090B71 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686185016364C3E00090B71 /* Roboto-Medium.ttf */; };
+		A68618671636547200090B71 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686185116364C3E00090B71 /* Roboto-MediumItalic.ttf */; };
+		A68618681636547200090B71 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686185216364C3E00090B71 /* Roboto-Regular.ttf */; };
+		A68618691636547200090B71 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686185316364C3E00090B71 /* Roboto-Thin.ttf */; };
+		A686186A1636547200090B71 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686185416364C3E00090B71 /* Roboto-ThinItalic.ttf */; };
+		A686186C163657F300090B71 /* iphone_retina_3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = A686186B163657F300090B71 /* iphone_retina_3.5.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A68617EC162B87A900090B71 /* HackerNewsReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNewsReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A68617F0162B87A900090B71 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A68617F2162B87A900090B71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A68617F4162B87A900090B71 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A68617F8162B87A900090B71 /* HackerNewsReader-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackerNewsReader-Info.plist"; sourceTree = "<group>"; };
+		A68617FA162B87A900090B71 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A68617FC162B87A900090B71 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A68617FE162B87A900090B71 /* HackerNewsReader-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HackerNewsReader-Prefix.pch"; sourceTree = "<group>"; };
+		A68617FF162B87A900090B71 /* SEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEAppDelegate.h; sourceTree = "<group>"; };
+		A6861800162B87A900090B71 /* SEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEAppDelegate.m; sourceTree = "<group>"; };
+		A6861802162B87A900090B71 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A6861804162B87A900090B71 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A6861806162B87A900090B71 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A686180F162B87CE00090B71 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
+		A6861810162B87CE00090B71 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
+		A6861811162B87CE00090B71 /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
+		A6861812162B87CE00090B71 /* UIImage+ImageWithUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithUIView.m"; sourceTree = "<group>"; };
+		A6861816162B880200090B71 /* SEInitialSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEInitialSlidingViewController.h; sourceTree = "<group>"; };
+		A6861817162B880200090B71 /* SEInitialSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEInitialSlidingViewController.m; sourceTree = "<group>"; };
+		A6861819162B881700090B71 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
+		A686181B162B883C00090B71 /* SEMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEMenuViewController.h; sourceTree = "<group>"; };
+		A686181C162B883D00090B71 /* SEMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEMenuViewController.m; sourceTree = "<group>"; };
+		A686181E162B885A00090B71 /* SEFrontNavigationTopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEFrontNavigationTopViewController.h; sourceTree = "<group>"; };
+		A686181F162B885A00090B71 /* SEFrontNavigationTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEFrontNavigationTopViewController.m; sourceTree = "<group>"; };
+		A6861821162B8CFD00090B71 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A6861823162B930E00090B71 /* SEFrontTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEFrontTableViewController.h; sourceTree = "<group>"; };
+		A6861824162B930E00090B71 /* SEFrontTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEFrontTableViewController.m; sourceTree = "<group>"; };
+		A6861826162B94FF00090B71 /* SENewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItem.h; sourceTree = "<group>"; };
+		A6861827162B94FF00090B71 /* SENewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItem.m; sourceTree = "<group>"; };
+		A686182D162BBA5200090B71 /* SEWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEWebViewController.h; sourceTree = "<group>"; };
+		A686182E162BBA5200090B71 /* SEWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEWebViewController.m; sourceTree = "<group>"; };
+		A6861834162D06BA00090B71 /* SENewsItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemTableViewCell.h; sourceTree = "<group>"; };
+		A6861835162D06BA00090B71 /* SENewsItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemTableViewCell.m; sourceTree = "<group>"; };
+		A686183C162E4F6000090B71 /* SENewsItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemViewController.h; sourceTree = "<group>"; };
+		A686183D162E4F6000090B71 /* SENewsItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemViewController.m; sourceTree = "<group>"; };
+		A6861842162FDA0E00090B71 /* SENewsItemTopWebCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemTopWebCell.h; sourceTree = "<group>"; };
+		A6861843162FDA0F00090B71 /* SENewsItemTopWebCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemTopWebCell.m; sourceTree = "<group>"; };
+		A686184516364C3D00090B71 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		A686184616364C3D00090B71 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		A686184716364C3D00090B71 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		A686184816364C3D00090B71 /* Roboto-BoldCondensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldCondensed.ttf"; sourceTree = "<group>"; };
+		A686184916364C3D00090B71 /* Roboto-BoldCondensedItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldCondensedItalic.ttf"; sourceTree = "<group>"; };
+		A686184A16364C3E00090B71 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		A686184B16364C3E00090B71 /* Roboto-Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Condensed.ttf"; sourceTree = "<group>"; };
+		A686184C16364C3E00090B71 /* Roboto-CondensedItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-CondensedItalic.ttf"; sourceTree = "<group>"; };
+		A686184D16364C3E00090B71 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		A686184E16364C3E00090B71 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		A686184F16364C3E00090B71 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		A686185016364C3E00090B71 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		A686185116364C3E00090B71 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		A686185216364C3E00090B71 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		A686185316364C3E00090B71 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		A686185416364C3E00090B71 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		A686186B163657F300090B71 /* iphone_retina_3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone_retina_3.5.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A68617E9162B87A900090B71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6861822162B8CFD00090B71 /* QuartzCore.framework in Frameworks */,
+				A68617F1162B87A900090B71 /* UIKit.framework in Frameworks */,
+				A68617F3162B87A900090B71 /* Foundation.framework in Frameworks */,
+				A68617F5162B87A900090B71 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A68617E1162B87A900090B71 = {
+			isa = PBXGroup;
+			children = (
+				A68617F6162B87A900090B71 /* HackerNewsReader */,
+				A68617EF162B87A900090B71 /* Frameworks */,
+				A68617ED162B87A900090B71 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A68617ED162B87A900090B71 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A68617EC162B87A900090B71 /* HackerNewsReader.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A68617EF162B87A900090B71 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6861821162B8CFD00090B71 /* QuartzCore.framework */,
+				A68617F0162B87A900090B71 /* UIKit.framework */,
+				A68617F2162B87A900090B71 /* Foundation.framework */,
+				A68617F4162B87A900090B71 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A68617F6162B87A900090B71 /* HackerNewsReader */ = {
+			isa = PBXGroup;
+			children = (
+				A6861819162B881700090B71 /* iPhone.storyboard */,
+				A6861815162B87D500090B71 /* Controllers */,
+				A686180D162B87CE00090B71 /* Vendor */,
+				A68617FF162B87A900090B71 /* SEAppDelegate.h */,
+				A6861800162B87A900090B71 /* SEAppDelegate.m */,
+				A68617F7162B87A900090B71 /* Supporting Files */,
+			);
+			path = HackerNewsReader;
+			sourceTree = "<group>";
+		};
+		A68617F7162B87A900090B71 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A686186B163657F300090B71 /* iphone_retina_3.5.png */,
+				A686184516364C3D00090B71 /* Roboto-Black.ttf */,
+				A686184616364C3D00090B71 /* Roboto-BlackItalic.ttf */,
+				A686184716364C3D00090B71 /* Roboto-Bold.ttf */,
+				A686184816364C3D00090B71 /* Roboto-BoldCondensed.ttf */,
+				A686184916364C3D00090B71 /* Roboto-BoldCondensedItalic.ttf */,
+				A686184A16364C3E00090B71 /* Roboto-BoldItalic.ttf */,
+				A686184B16364C3E00090B71 /* Roboto-Condensed.ttf */,
+				A686184C16364C3E00090B71 /* Roboto-CondensedItalic.ttf */,
+				A686184D16364C3E00090B71 /* Roboto-Italic.ttf */,
+				A686184E16364C3E00090B71 /* Roboto-Light.ttf */,
+				A686184F16364C3E00090B71 /* Roboto-LightItalic.ttf */,
+				A686185016364C3E00090B71 /* Roboto-Medium.ttf */,
+				A686185116364C3E00090B71 /* Roboto-MediumItalic.ttf */,
+				A686185216364C3E00090B71 /* Roboto-Regular.ttf */,
+				A686185316364C3E00090B71 /* Roboto-Thin.ttf */,
+				A686185416364C3E00090B71 /* Roboto-ThinItalic.ttf */,
+				A68617F8162B87A900090B71 /* HackerNewsReader-Info.plist */,
+				A68617F9162B87A900090B71 /* InfoPlist.strings */,
+				A68617FC162B87A900090B71 /* main.m */,
+				A68617FE162B87A900090B71 /* HackerNewsReader-Prefix.pch */,
+				A6861802162B87A900090B71 /* Default.png */,
+				A6861804162B87A900090B71 /* Default@2x.png */,
+				A6861806162B87A900090B71 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A686180D162B87CE00090B71 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				A686180E162B87CE00090B71 /* ECSlidingViewController */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		A686180E162B87CE00090B71 /* ECSlidingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A686180F162B87CE00090B71 /* ECSlidingViewController.h */,
+				A6861810162B87CE00090B71 /* ECSlidingViewController.m */,
+				A6861811162B87CE00090B71 /* UIImage+ImageWithUIView.h */,
+				A6861812162B87CE00090B71 /* UIImage+ImageWithUIView.m */,
+			);
+			path = ECSlidingViewController;
+			sourceTree = "<group>";
+		};
+		A6861815162B87D500090B71 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A68618701637BF2D00090B71 /* MenuView */,
+				A686186F1637BF0800090B71 /* NewsItemTableView */,
+				A686186E1637BEF900090B71 /* WebView */,
+				A686186D1637BED900090B71 /* FrontTableView */,
+				A6861816162B880200090B71 /* SEInitialSlidingViewController.h */,
+				A6861817162B880200090B71 /* SEInitialSlidingViewController.m */,
+				A686181E162B885A00090B71 /* SEFrontNavigationTopViewController.h */,
+				A686181F162B885A00090B71 /* SEFrontNavigationTopViewController.m */,
+				A6861826162B94FF00090B71 /* SENewsItem.h */,
+				A6861827162B94FF00090B71 /* SENewsItem.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		A686186D1637BED900090B71 /* FrontTableView */ = {
+			isa = PBXGroup;
+			children = (
+				A6861834162D06BA00090B71 /* SENewsItemTableViewCell.h */,
+				A6861835162D06BA00090B71 /* SENewsItemTableViewCell.m */,
+				A6861823162B930E00090B71 /* SEFrontTableViewController.h */,
+				A6861824162B930E00090B71 /* SEFrontTableViewController.m */,
+			);
+			name = FrontTableView;
+			sourceTree = "<group>";
+		};
+		A686186E1637BEF900090B71 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				A686182D162BBA5200090B71 /* SEWebViewController.h */,
+				A686182E162BBA5200090B71 /* SEWebViewController.m */,
+			);
+			name = WebView;
+			sourceTree = "<group>";
+		};
+		A686186F1637BF0800090B71 /* NewsItemTableView */ = {
+			isa = PBXGroup;
+			children = (
+				A686183C162E4F6000090B71 /* SENewsItemViewController.h */,
+				A686183D162E4F6000090B71 /* SENewsItemViewController.m */,
+				A6861842162FDA0E00090B71 /* SENewsItemTopWebCell.h */,
+				A6861843162FDA0F00090B71 /* SENewsItemTopWebCell.m */,
+			);
+			name = NewsItemTableView;
+			sourceTree = "<group>";
+		};
+		A68618701637BF2D00090B71 /* MenuView */ = {
+			isa = PBXGroup;
+			children = (
+				A686181B162B883C00090B71 /* SEMenuViewController.h */,
+				A686181C162B883D00090B71 /* SEMenuViewController.m */,
+			);
+			name = MenuView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A68617EB162B87A900090B71 /* HackerNewsReader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A686180A162B87A900090B71 /* Build configuration list for PBXNativeTarget "HackerNewsReader" */;
+			buildPhases = (
+				A68617E8162B87A900090B71 /* Sources */,
+				A68617E9162B87A900090B71 /* Frameworks */,
+				A68617EA162B87A900090B71 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HackerNewsReader;
+			productName = HackerNewsReader;
+			productReference = A68617EC162B87A900090B71 /* HackerNewsReader.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A68617E3162B87A900090B71 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SE;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Sol Eun";
+			};
+			buildConfigurationList = A68617E6162B87A900090B71 /* Build configuration list for PBXProject "HackerNewsReader" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A68617E1162B87A900090B71;
+			productRefGroup = A68617ED162B87A900090B71 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A68617EB162B87A900090B71 /* HackerNewsReader */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A68617EA162B87A900090B71 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A686185B1636547200090B71 /* Roboto-Black.ttf in Resources */,
+				A686185C1636547200090B71 /* Roboto-BlackItalic.ttf in Resources */,
+				A686185D1636547200090B71 /* Roboto-Bold.ttf in Resources */,
+				A686185E1636547200090B71 /* Roboto-BoldCondensed.ttf in Resources */,
+				A686185F1636547200090B71 /* Roboto-BoldCondensedItalic.ttf in Resources */,
+				A68618601636547200090B71 /* Roboto-BoldItalic.ttf in Resources */,
+				A68618611636547200090B71 /* Roboto-Condensed.ttf in Resources */,
+				A68618621636547200090B71 /* Roboto-CondensedItalic.ttf in Resources */,
+				A68618631636547200090B71 /* Roboto-Italic.ttf in Resources */,
+				A68618641636547200090B71 /* Roboto-Light.ttf in Resources */,
+				A68618651636547200090B71 /* Roboto-LightItalic.ttf in Resources */,
+				A68618661636547200090B71 /* Roboto-Medium.ttf in Resources */,
+				A68618671636547200090B71 /* Roboto-MediumItalic.ttf in Resources */,
+				A68618681636547200090B71 /* Roboto-Regular.ttf in Resources */,
+				A68618691636547200090B71 /* Roboto-Thin.ttf in Resources */,
+				A686186A1636547200090B71 /* Roboto-ThinItalic.ttf in Resources */,
+				A68617FB162B87A900090B71 /* InfoPlist.strings in Resources */,
+				A6861803162B87A900090B71 /* Default.png in Resources */,
+				A6861805162B87A900090B71 /* Default@2x.png in Resources */,
+				A6861807162B87A900090B71 /* Default-568h@2x.png in Resources */,
+				A686181A162B881700090B71 /* iPhone.storyboard in Resources */,
+				A686186C163657F300090B71 /* iphone_retina_3.5.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A68617E8162B87A900090B71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A68617FD162B87A900090B71 /* main.m in Sources */,
+				A6861801162B87A900090B71 /* SEAppDelegate.m in Sources */,
+				A6861813162B87CE00090B71 /* ECSlidingViewController.m in Sources */,
+				A6861814162B87CE00090B71 /* UIImage+ImageWithUIView.m in Sources */,
+				A6861818162B880200090B71 /* SEInitialSlidingViewController.m in Sources */,
+				A686181D162B883D00090B71 /* SEMenuViewController.m in Sources */,
+				A6861820162B885A00090B71 /* SEFrontNavigationTopViewController.m in Sources */,
+				A6861825162B930F00090B71 /* SEFrontTableViewController.m in Sources */,
+				A6861828162B94FF00090B71 /* SENewsItem.m in Sources */,
+				A686182F162BBA5300090B71 /* SEWebViewController.m in Sources */,
+				A6861836162D06BA00090B71 /* SENewsItemTableViewCell.m in Sources */,
+				A686183E162E4F6000090B71 /* SENewsItemViewController.m in Sources */,
+				A6861844162FDA0F00090B71 /* SENewsItemTopWebCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A68617F9162B87A900090B71 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A68617FA162B87A900090B71 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A6861808162B87A900090B71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A6861809162B87A900090B71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A686180B162B87A900090B71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HackerNewsReader/HackerNewsReader-Prefix.pch";
+				INFOPLIST_FILE = "HackerNewsReader/HackerNewsReader-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A686180C162B87A900090B71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HackerNewsReader/HackerNewsReader-Prefix.pch";
+				INFOPLIST_FILE = "HackerNewsReader/HackerNewsReader-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A68617E6162B87A900090B71 /* Build configuration list for PBXProject "HackerNewsReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6861808162B87A900090B71 /* Debug */,
+				A6861809162B87A900090B71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A686180A162B87A900090B71 /* Build configuration list for PBXNativeTarget "HackerNewsReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A686180B162B87A900090B71 /* Debug */,
+				A686180C162B87A900090B71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A68617E3162B87A900090B71 /* Project object */;
+}
