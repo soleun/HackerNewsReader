@@ -41,6 +41,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.navigationBar.tintColor = [UIColor colorWithWhite:0.1 alpha:1];
 }
 /*
 - (void)didReceiveMemoryWarning

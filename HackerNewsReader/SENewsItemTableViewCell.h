@@ -22,8 +22,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UILabel *timeAuthorLabel;
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withNewsItem:(SENewsItem *)currentItem;
-- (void)updateCell;
+@property (strong, nonatomic) IBOutlet UIView *pointCommentView;
+@property (strong, nonatomic) IBOutlet UIView *dummyView;
+@property (strong, nonatomic) IBOutlet UILabel *pointLabel;
+@property (strong, nonatomic) IBOutlet UILabel *commentLabel;
 
 @end

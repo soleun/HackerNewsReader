@@ -35,7 +35,14 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self setTitle:[newsItem title]];
+    UILabel *navTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
+    [navTitle setFont:[UIFont fontWithName:@"Roboto-Regular" size:20.0f]];
+    [navTitle setTextColor:[UIColor whiteColor]];
+    [navTitle setBackgroundColor:[UIColor clearColor]];
+    [navTitle setText:[newsItem title]];
+    [navTitle sizeToFit];
+    
+    [[self navigationItem] setTitleView:navTitle];
     
     NSLog(@"NSURLCache ::::: %i", [[NSURLCache sharedURLCache] currentMemoryUsage]);
     

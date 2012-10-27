@@ -14,25 +14,15 @@
 @synthesize containerView = _containerView;
 @synthesize titleLabel = _titleLabel;
 @synthesize timeAuthorLabel = _timeAuthorLabel;
+@synthesize pointCommentView;
+@synthesize dummyView;
+@synthesize pointLabel;
+@synthesize commentLabel;
 
-UIView *pointCommentView;
-UIView *dummyView;
-UILabel *pointLabel;
-UILabel *commentLabel;
 CGFloat viewWidth = 80;
 CGFloat viewHeight = 20;
 CGFloat hGap = 5;
 CGFloat vGap = 2;
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withNewsItem:(SENewsItem *)currentItem
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-        [self setNewsItem:currentItem];
-    }
-    return self;
-}
 
 - (NSString *) reuseIdentifier {
     return @"NewsItemCell";
@@ -57,49 +47,6 @@ CGFloat vGap = 2;
 
 - (void)layoutSubviews
 {
-    pointCommentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
-    [pointCommentView setBackgroundColor:[UIColor whiteColor]];
-    
-    pointLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
-    commentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
-    
-    [pointLabel setFont:[UIFont fontWithName:@"Roboto-Light" size:14.0f]];
-    [pointLabel setTextColor:[UIColor grayColor]];
-    [pointLabel setText:[[NSString alloc] initWithFormat:@"C: %@", [newsItem numComments]]];
-    [pointLabel sizeToFit];
-    
-    [commentLabel setFont:[UIFont fontWithName:@"Roboto-Light" size:14.0f]];
-    [commentLabel setTextColor:[UIColor grayColor]];
-    [commentLabel setText:[[NSString alloc] initWithFormat:@"P: %@", [newsItem points]]];
-    [commentLabel sizeToFit];
-    
-    CGFloat pointLabelWidth = pointLabel.frame.size.width;
-    CGFloat pointLabelHeight = pointLabel.frame.size.height;
-    CGFloat commentLabelWidth = commentLabel.frame.size.width;
-    CGFloat commentLabelHeight = commentLabel.frame.size.height;
-    
-    [pointCommentView setFrame:CGRectMake([self containerView].frame.size.width - commentLabelWidth - pointLabelWidth - hGap*3,
-                                          [self containerView].frame.size.height - commentLabelHeight - vGap,
-                                          commentLabelWidth + pointLabelWidth + hGap*3 + 3,
-                                          commentLabelHeight + vGap)];
-    
-    [pointLabel setFrame:CGRectMake(hGap, vGap, pointLabelWidth, pointLabelHeight)];
-    [commentLabel setFrame:CGRectMake(pointLabelWidth + hGap*2, vGap, commentLabelWidth, commentLabelHeight)];
-    
-    dummyView = [[UIView alloc] initWithFrame:CGRectMake(0, commentLabelHeight, 3, 3)];
-    [dummyView setBackgroundColor:[UIColor whiteColor]];
-    
-    [pointCommentView addSubview:dummyView];
-    [pointCommentView addSubview:pointLabel];
-    [pointCommentView addSubview:commentLabel];
-    
-    [[pointCommentView layer] setCornerRadius:3.0f];
-    
-    [[self containerView] addSubview:pointCommentView];
-}
-
-- (void)updateCell
-{
     [[self titleLabel] setFont:[UIFont fontWithName:@"Roboto-Light" size:18.0f]];
     [[self titleLabel] setTextColor:[UIColor orangeColor]];
     [[self titleLabel] setShadowColor:[UIColor blackColor]];
@@ -118,6 +65,59 @@ CGFloat vGap = 2;
     [[[self containerView] layer] setShadowOffset:CGSizeMake(1, 1)];
     [[[self containerView] layer] setShadowRadius:2];
     [[[self containerView] layer] setShadowOpacity:0.7];
+    
+    if (pointLabel == nil) {
+        pointLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
+        
+        [pointLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:14.0f]];
+        [pointLabel setTextColor:[UIColor colorWithWhite:0.2 alpha:1]];
+        [pointLabel setBackgroundColor:[UIColor clearColor]];
+    }
+    
+    if (commentLabel == nil) {
+        commentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
+        
+        [commentLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:14.0f]];
+        [commentLabel setTextColor:[UIColor colorWithWhite:0.2 alpha:1]];
+        [commentLabel setBackgroundColor:[UIColor clearColor]];
+    }
+    
+    
+    [pointLabel setText:[[NSString alloc] initWithFormat:@"C: %@", [newsItem numComments]]];
+    [pointLabel sizeToFit];
+    
+    [commentLabel setText:[[NSString alloc] initWithFormat:@"P: %@", [newsItem points]]];
+    [commentLabel sizeToFit];
+    
+    CGFloat pointLabelWidth = pointLabel.frame.size.width;
+    CGFloat pointLabelHeight = pointLabel.frame.size.height;
+    CGFloat commentLabelWidth = commentLabel.frame.size.width;
+    CGFloat commentLabelHeight = commentLabel.frame.size.height;
+    
+    [pointLabel setFrame:CGRectMake(hGap, vGap, pointLabelWidth, pointLabelHeight)];
+    [commentLabel setFrame:CGRectMake(pointLabelWidth + hGap*2, vGap, commentLabelWidth, commentLabelHeight)];
+    
+    
+    if (pointCommentView == nil) {
+        pointCommentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
+        [pointCommentView setBackgroundColor:[UIColor colorWithWhite:0.5 alpha:1]];
+        
+        dummyView = [[UIView alloc] initWithFrame:CGRectMake(0, commentLabelHeight, 3, 3)];
+        [dummyView setBackgroundColor:[UIColor colorWithWhite:0.5 alpha:1]];
+        
+        [pointCommentView addSubview:dummyView];
+        [pointCommentView addSubview:pointLabel];
+        [pointCommentView addSubview:commentLabel];
+        
+        [[pointCommentView layer] setCornerRadius:3.0f];
+        
+        [[self containerView] addSubview:pointCommentView];
+    }
+    
+    [pointCommentView setFrame:CGRectMake([self containerView].frame.size.width - commentLabelWidth - pointLabelWidth - hGap*3,
+                                          [self containerView].frame.size.height - commentLabelHeight - vGap,
+                                          commentLabelWidth + pointLabelWidth + hGap*3 + 3,
+                                          commentLabelHeight + vGap)];
 }
 
 @end

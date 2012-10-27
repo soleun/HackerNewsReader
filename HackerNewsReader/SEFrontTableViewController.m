@@ -62,6 +62,15 @@ NSMutableArray *newsItems;
     
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:
                                      [UIImage imageNamed:@"iphone_retina_3.5.png"]];
+    
+    UILabel *navTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
+    [navTitle setFont:[UIFont fontWithName:@"Roboto-Regular" size:20.0f]];
+    [navTitle setTextColor:[UIColor whiteColor]];
+    [navTitle setBackgroundColor:[UIColor clearColor]];
+    [navTitle setText:[menuItem objectForKey:@"name"]];
+    [navTitle sizeToFit];
+    
+    [[self navigationItem] setTitleView:navTitle];
 }
 
 - (void)didReceiveMemoryWarning
@@ -170,18 +179,14 @@ NSMutableArray *newsItems;
     // check for resuable cell
     SENewsItemTableViewCell *cell = (SENewsItemTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    SENewsItem *currentItem = [newsItems objectAtIndex:[indexPath row]];
-    
     if (cell == nil) {
         // create cell
-        cell = [[SENewsItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withNewsItem:currentItem];
-    } else {
-        
+        cell = [[SENewsItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // set text label for cell
+    SENewsItem *currentItem = [newsItems objectAtIndex:[indexPath row]];
     [cell setNewsItem:currentItem];
-    [cell updateCell];
     
     return cell;
 }

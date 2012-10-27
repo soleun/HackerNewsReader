@@ -311,6 +311,65 @@
             <point key="canvasLocation" x="2110" y="169"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="ECSlidingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECSlidingViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SEFrontNavigationTopViewController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SEFrontNavigationTopViewController.h"/>
+        </class>
+        <class className="SEFrontTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SEFrontTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showMenu:"/>
+                <relationship kind="outlet" name="frontTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SEInitialSlidingViewController" superclassName="ECSlidingViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SEInitialSlidingViewController.h"/>
+        </class>
+        <class className="SEMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SEMenuViewController.h"/>
+        </class>
+        <class className="SENewsItemTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SENewsItemTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="commentLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="dummyView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pointCommentView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pointLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeAuthorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SENewsItemTopWebCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SENewsItemTopWebCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="loadingIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="titleTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="SENewsItemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SENewsItemViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SEWebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SEWebViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="currentNewsItemWebView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
