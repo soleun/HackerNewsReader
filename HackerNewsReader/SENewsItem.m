@@ -10,7 +10,7 @@
 
 @implementation SENewsItem
 
-@synthesize title, url, domain, text, type, username, created;
+@synthesize sigId, title, url, domain, text, type, username, created;
 
 - (BOOL)hasUrl
 {

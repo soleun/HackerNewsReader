@@ -134,6 +134,7 @@ NSMutableArray *newsItems;
             //NSLog(@"%@", [result objectForKey:@"item"]);
             item = [[SENewsItem alloc] init];
             //NSLog(@"title: %@", [[result objectForKey:@"item"] objectForKey:@"title"]);
+            [item setSigId:[[result objectForKey:@"item"] objectForKey:@"_id"]];
             [item setTitle:[[result objectForKey:@"item"] objectForKey:@"title"]];
             [item setUsername:[[result objectForKey:@"item"] objectForKey:@"username"]];
             [item setCreated:[dateFormat dateFromString:[[result objectForKey:@"item"] objectForKey:@"create_ts"]]];

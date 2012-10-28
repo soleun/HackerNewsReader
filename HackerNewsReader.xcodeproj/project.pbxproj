@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A64D3AE7163D10D600410239 /* SENewsItemComment.m in Sources */ = {isa = PBXBuildFile; fileRef = A64D3AE6163D10D600410239 /* SENewsItemComment.m */; };
 		A68617F1162B87A900090B71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68617F0162B87A900090B71 /* UIKit.framework */; };
 		A68617F3162B87A900090B71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68617F2162B87A900090B71 /* Foundation.framework */; };
 		A68617F5162B87A900090B71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68617F4162B87A900090B71 /* CoreGraphics.framework */; };
@@ -49,6 +50,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A64D3AE5163D10D600410239 /* SENewsItemComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemComment.h; sourceTree = "<group>"; };
+		A64D3AE6163D10D600410239 /* SENewsItemComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemComment.m; sourceTree = "<group>"; };
 		A68617EC162B87A900090B71 /* HackerNewsReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNewsReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68617F0162B87A900090B71 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A68617F2162B87A900090B71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -224,6 +227,8 @@
 				A686181F162B885A00090B71 /* SEFrontNavigationTopViewController.m */,
 				A6861826162B94FF00090B71 /* SENewsItem.h */,
 				A6861827162B94FF00090B71 /* SENewsItem.m */,
+				A64D3AE5163D10D600410239 /* SENewsItemComment.h */,
+				A64D3AE6163D10D600410239 /* SENewsItemComment.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -365,6 +370,7 @@
 				A6861836162D06BA00090B71 /* SENewsItemTableViewCell.m in Sources */,
 				A686183E162E4F6000090B71 /* SENewsItemTableViewController.m in Sources */,
 				A6861844162FDA0F00090B71 /* SENewsItemTopWebCell.m in Sources */,
+				A64D3AE7163D10D600410239 /* SENewsItemComment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SEFrontNavigationTopViewController.h"
 #import "SENewsItem.h"
+#import "SENewsItemComment.h"
 #import "SEWebViewController.h"
 #import "SENewsItemTopWebCell.h"
 

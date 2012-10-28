@@ -10,6 +10,7 @@
 
 @interface SENewsItem : NSObject
 
+@property (nonatomic, strong) NSString *sigId;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *domain;

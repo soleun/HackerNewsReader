@@ -17,6 +17,8 @@
 
 @synthesize newsItem;
 
+NSMutableArray *comments;
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showWeb"]) {
@@ -85,7 +87,50 @@
     
     // Comment fetch url : http://api.thriftdb.com/api.hnsearch.com/items/_search?filter[fields][discussion.sigid]=4691251-ad4a0&sortby=product(points,div(sub(points,1),pow(sum(div(ms(NOW,create_ts),3600000),2.25),1.8)))&limit=100
     
+    NSError *error = nil;
+    NSURL *url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"http://api.thriftdb.com/api.hnsearch.com/items/_search?filter[fields][discussion.sigid]=%@&sortby=product(points,div(sub(points,1),pow(sum(div(ms(NOW,create_ts),3600000),2.25),1.8)))&limit=100", [newsItem sigId]]];
+    NSString *json = [NSString stringWithContentsOfURL:url
+                                              encoding:NSASCIIStringEncoding
+                                                 error:&error];
+    NSLog(@"\nJSON: %@ \n Error: %@", json, error);
     
+    if(!error) {
+        NSData *jsonData = [json dataUsingEncoding:NSASCIIStringEncoding];
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                 options:kNilOptions
+                                                                   error:&error];
+        //NSLog(@"JSON: %@", [jsonDict objectForKey:@"results"]);
+        
+        id results = [jsonDict objectForKey:@"results"];
+        
+        comments = [[NSMutableArray alloc] init];
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd'T'hh:mm:ss'Z'"];
+        
+        SENewsItemComment *comment;
+        for (NSDictionary* result in results) {
+            //NSLog(@"%@", [result objectForKey:@"item"]);
+            comment = [[SENewsItemComment alloc] init];
+            //NSLog(@"title: %@", [[result objectForKey:@"item"] objectForKey:@"title"]);
+            [comment setTitle:[[result objectForKey:@"item"] objectForKey:@"title"]];
+            [comment setText:[[result objectForKey:@"item"] objectForKey:@"text"]];
+            [comment setUsername:[[result objectForKey:@"item"] objectForKey:@"username"]];
+            [comment setCreated:[dateFormat dateFromString:[[result objectForKey:@"item"] objectForKey:@"create_ts"]]];
+            [comment setPoints:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"points"] integerValue]]];
+            [comment setNumComments:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"num_comments"] integerValue]]];
+            //[item setNumComments:[[NSNumberFormatter alloc] numberFromString:[[result objectForKey:@"item"] objectForKey:@"num_comments"]]];
+            //NSLog(@"url: %@", [[result objectForKey:@"item"] objectForKey:@"url"]);
+            NSString *url = (NSString *)[[result objectForKey:@"item"] objectForKey:@"url"];
+            if ((NSNull *)url == [NSNull null]) {
+                [comment setUrl:@"about:blank"];
+            } else {
+                [comment setUrl:url];
+            }
+            
+            [comments addObject:comment];
+        }
+    }
 }
 
 #pragma mark - Table View
@@ -93,7 +138,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 10;
+    return [comments count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -131,9 +176,12 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         
-        NSString *label = [[NSString alloc] initWithFormat:@"Comment %i", [indexPath row]];
+        SENewsItemComment *currentItem = [comments objectAtIndex:[indexPath row]-1];
+        
+        NSString *label = [currentItem text];
         [[cell textLabel] setText:label];
-        [[cell textLabel] setFont:[UIFont fontWithName:@"Roboto-Light" size:16.0f]];
+        [[cell textLabel] setNumberOfLines:0];
+        [[cell textLabel] setFont:[UIFont fontWithName:@"Roboto-Light" size:12.0f]];
         
         return cell;
     }
@@ -144,7 +192,11 @@
     if ([indexPath row] == 0) {
         return 200.0f;
     } else {
-        return 44.0f;
+        SENewsItemComment *currentItem = [comments objectAtIndex:[indexPath row]-1];
+        
+        CGSize titleHeight = [[currentItem text] sizeWithFont:[UIFont fontWithName:@"Roboto-Light" size:12.0f] constrainedToSize:CGSizeMake(300.0f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+        
+        return titleHeight.height;
     }
 }
 
