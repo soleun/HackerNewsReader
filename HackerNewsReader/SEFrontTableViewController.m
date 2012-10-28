@@ -21,12 +21,12 @@ NSMutableArray *newsItems;
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showNewsItem"]) {
-        SENewsItemViewController *nivc = [segue destinationViewController];
+        SENewsItemTableViewController *nitvc = [segue destinationViewController];
         NSIndexPath *path = [[self frontTableView] indexPathForSelectedRow];
         
         SENewsItem *item = [newsItems objectAtIndex:[path row]];
         
-        [nivc setNewsItem:item];
+        [nitvc setNewsItem:item];
     }
 }
 

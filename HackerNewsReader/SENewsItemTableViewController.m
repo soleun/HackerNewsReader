@@ -1,5 +1,5 @@
 //
-//  SENewsItemViewController.m
+//  SENewsItemTableViewController.m
 //  HackerNewsReader
 //
 //  Created by Sol Eun on 10/16/12.
@@ -7,16 +7,15 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "SENewsItemViewController.h"
+#import "SENewsItemTableViewController.h"
 
-@interface SENewsItemViewController ()
+@interface SENewsItemTableViewController ()
 
 @end
 
-@implementation SENewsItemViewController
+@implementation SENewsItemTableViewController
 
 @synthesize newsItem;
-@synthesize tableView = _tableView;
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -41,6 +40,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self refreshTable];
+    
+    [self.refreshControl addTarget:self
+                            action:@selector(refreshView:)
+                  forControlEvents:UIControlEventValueChanged];
+    
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:
                                      [UIImage imageNamed:@"iphone_retina_3.5.png"]];
     
@@ -58,6 +63,29 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)refreshView:(UIRefreshControl *)refresh
+{
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+    
+    [self refreshTable];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, h:mm a"];
+    NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
+                             [formatter stringFromDate:[NSDate date]]];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    [refresh endRefreshing];
+}
+
+- (void)refreshTable
+{
+    // TODO: Refresh table
+    
+    // Comment fetch url : http://api.thriftdb.com/api.hnsearch.com/items/_search?filter[fields][discussion.sigid]=4691251-ad4a0&sortby=product(points,div(sub(points,1),pow(sum(div(ms(NOW,create_ts),3600000),2.25),1.8)))&limit=100
+    
+    
 }
 
 #pragma mark - Table View

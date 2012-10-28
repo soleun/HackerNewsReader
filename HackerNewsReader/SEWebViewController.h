@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SENewsItemViewController.h"
+#import "SENewsItemTableViewController.h"
 #import "SENewsItem.h"
 #import "SENewsItemTopWebCell.h"
 

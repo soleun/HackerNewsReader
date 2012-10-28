@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ECSlidingViewController.h"
-#import "SENewsItemViewController.h"
+#import "SENewsItemTableViewController.h"
 #import "SENewsItemTableViewCell.h"
 #import "SEMenuViewController.h"
 

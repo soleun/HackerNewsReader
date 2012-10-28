@@ -27,7 +27,7 @@
 		A6861828162B94FF00090B71 /* SENewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A6861827162B94FF00090B71 /* SENewsItem.m */; };
 		A686182F162BBA5300090B71 /* SEWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A686182E162BBA5200090B71 /* SEWebViewController.m */; };
 		A6861836162D06BA00090B71 /* SENewsItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6861835162D06BA00090B71 /* SENewsItemTableViewCell.m */; };
-		A686183E162E4F6000090B71 /* SENewsItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A686183D162E4F6000090B71 /* SENewsItemViewController.m */; };
+		A686183E162E4F6000090B71 /* SENewsItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A686183D162E4F6000090B71 /* SENewsItemTableViewController.m */; };
 		A6861844162FDA0F00090B71 /* SENewsItemTopWebCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6861843162FDA0F00090B71 /* SENewsItemTopWebCell.m */; };
 		A686185B1636547200090B71 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686184516364C3D00090B71 /* Roboto-Black.ttf */; };
 		A686185C1636547200090B71 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686184616364C3D00090B71 /* Roboto-BlackItalic.ttf */; };
@@ -82,8 +82,8 @@
 		A686182E162BBA5200090B71 /* SEWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEWebViewController.m; sourceTree = "<group>"; };
 		A6861834162D06BA00090B71 /* SENewsItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemTableViewCell.h; sourceTree = "<group>"; };
 		A6861835162D06BA00090B71 /* SENewsItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemTableViewCell.m; sourceTree = "<group>"; };
-		A686183C162E4F6000090B71 /* SENewsItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemViewController.h; sourceTree = "<group>"; };
-		A686183D162E4F6000090B71 /* SENewsItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemViewController.m; sourceTree = "<group>"; };
+		A686183C162E4F6000090B71 /* SENewsItemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemTableViewController.h; sourceTree = "<group>"; };
+		A686183D162E4F6000090B71 /* SENewsItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemTableViewController.m; sourceTree = "<group>"; };
 		A6861842162FDA0E00090B71 /* SENewsItemTopWebCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemTopWebCell.h; sourceTree = "<group>"; };
 		A6861843162FDA0F00090B71 /* SENewsItemTopWebCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemTopWebCell.m; sourceTree = "<group>"; };
 		A686184516364C3D00090B71 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
@@ -251,8 +251,8 @@
 		A686186F1637BF0800090B71 /* NewsItemTableView */ = {
 			isa = PBXGroup;
 			children = (
-				A686183C162E4F6000090B71 /* SENewsItemViewController.h */,
-				A686183D162E4F6000090B71 /* SENewsItemViewController.m */,
+				A686183C162E4F6000090B71 /* SENewsItemTableViewController.h */,
+				A686183D162E4F6000090B71 /* SENewsItemTableViewController.m */,
 				A6861842162FDA0E00090B71 /* SENewsItemTopWebCell.h */,
 				A6861843162FDA0F00090B71 /* SENewsItemTopWebCell.m */,
 			);
@@ -363,7 +363,7 @@
 				A6861828162B94FF00090B71 /* SENewsItem.m in Sources */,
 				A686182F162BBA5300090B71 /* SEWebViewController.m in Sources */,
 				A6861836162D06BA00090B71 /* SENewsItemTableViewCell.m in Sources */,
-				A686183E162E4F6000090B71 /* SENewsItemViewController.m in Sources */,
+				A686183E162E4F6000090B71 /* SENewsItemTableViewController.m in Sources */,
 				A6861844162FDA0F00090B71 /* SENewsItemTopWebCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
