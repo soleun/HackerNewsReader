@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIView *containerBGView;
 @property (weak, nonatomic) IBOutlet UILabel *timeAuthorLabel;
 @property (strong, nonatomic) IBOutlet UIView *pointCommentView;
 @property (strong, nonatomic) IBOutlet UIView *dummyView;

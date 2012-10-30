@@ -48,8 +48,8 @@ NSMutableArray *comments;
                             action:@selector(refreshView:)
                   forControlEvents:UIControlEventValueChanged];
     
-    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:
-                                     [UIImage imageNamed:@"iphone_retina_3.5.png"]];
+    //self.tableView.backgroundView = [[UIImageView alloc] initWithImage:
+    //                                 [UIImage imageNamed:@"iphone_retina_3.5.png"]];
     
     UILabel *navTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
     [navTitle setFont:[UIFont fontWithName:@"Roboto-Regular" size:20.0f]];
@@ -92,7 +92,7 @@ NSMutableArray *comments;
     NSString *json = [NSString stringWithContentsOfURL:url
                                               encoding:NSASCIIStringEncoding
                                                  error:&error];
-    NSLog(@"\nJSON: %@ \n Error: %@", json, error);
+    //NSLog(@"\nJSON: %@ \n Error: %@", json, error);
     
     if(!error) {
         NSData *jsonData = [json dataUsingEncoding:NSASCIIStringEncoding];
@@ -130,15 +130,27 @@ NSMutableArray *comments;
             
             [comments addObject:comment];
         }
+        
+        [[self tableView] reloadData];
     }
+}
+
+- (BOOL) shouldAutorotate
+{
+    return NO;
 }
 
 #pragma mark - Table View
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [comments count];
+    NSInteger rows = [comments count] + 1;
+    
+    if ([comments count] == 0 || !comments) {
+        rows++;
+    }
+    
+    return rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -176,12 +188,17 @@ NSMutableArray *comments;
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         
-        SENewsItemComment *currentItem = [comments objectAtIndex:[indexPath row]-1];
+        NSString *label;
+        if ([comments count] == 0 || !comments) {
+            label = @"No comment";
+        } else {
+            SENewsItemComment *currentItem = [comments objectAtIndex:[indexPath row] - 1];
+            label = [currentItem text];
+        }
         
-        NSString *label = [currentItem text];
         [[cell textLabel] setText:label];
         [[cell textLabel] setNumberOfLines:0];
-        [[cell textLabel] setFont:[UIFont fontWithName:@"Roboto-Light" size:12.0f]];
+        [[cell textLabel] setFont:[UIFont fontWithName:@"Roboto-Light" size:14.0f]];
         
         return cell;
     }
@@ -189,15 +206,21 @@ NSMutableArray *comments;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGFloat height;
+    
     if ([indexPath row] == 0) {
-        return 200.0f;
+        height = 200.0f;
+    } else if ([comments count] == 0 || !comments) {
+        height = 44.0f;
     } else {
         SENewsItemComment *currentItem = [comments objectAtIndex:[indexPath row]-1];
         
-        CGSize titleHeight = [[currentItem text] sizeWithFont:[UIFont fontWithName:@"Roboto-Light" size:12.0f] constrainedToSize:CGSizeMake(300.0f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+        CGSize titleHeight = [[currentItem text] sizeWithFont:[UIFont fontWithName:@"Roboto-Light" size:14.0f] constrainedToSize:CGSizeMake(300.0f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
         
-        return titleHeight.height;
+        height = titleHeight.height + 20;
     }
+    
+    return height;
 }
 
 @end

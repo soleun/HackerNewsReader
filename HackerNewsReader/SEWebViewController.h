@@ -18,4 +18,6 @@
 @property (nonatomic, strong) NSMutableData *receivedData;
 @property (nonatomic, strong) NSURLRequest *urlRequest;
 
+- (IBAction)refreshWebView:(id)sender;
+
 @end

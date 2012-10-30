@@ -256,10 +256,10 @@
 		A686186F1637BF0800090B71 /* NewsItemTableView */ = {
 			isa = PBXGroup;
 			children = (
-				A686183C162E4F6000090B71 /* SENewsItemTableViewController.h */,
-				A686183D162E4F6000090B71 /* SENewsItemTableViewController.m */,
 				A6861842162FDA0E00090B71 /* SENewsItemTopWebCell.h */,
 				A6861843162FDA0F00090B71 /* SENewsItemTopWebCell.m */,
+				A686183C162E4F6000090B71 /* SENewsItemTableViewController.h */,
+				A686183D162E4F6000090B71 /* SENewsItemTableViewController.m */,
 			);
 			name = NewsItemTableView;
 			sourceTree = "<group>";

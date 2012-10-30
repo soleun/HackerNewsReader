@@ -12,6 +12,7 @@
 
 @synthesize newsItem, HTMLCache, receivedData;
 @synthesize containerView = _containerView;
+@synthesize containerBGView = _containerBGView;
 @synthesize titleLabel = _titleLabel;
 @synthesize timeAuthorLabel = _timeAuthorLabel;
 @synthesize pointCommentView;
@@ -19,10 +20,10 @@
 @synthesize pointLabel;
 @synthesize commentLabel;
 
-CGFloat viewWidth = 80;
-CGFloat viewHeight = 20;
-CGFloat hGap = 5;
-CGFloat vGap = 2;
+static CGFloat viewWidth = 80;
+static CGFloat viewHeight = 20;
+static CGFloat hGap = 5;
+static CGFloat vGap = 2;
 
 - (NSString *) reuseIdentifier {
     return @"NewsItemCell";
@@ -47,10 +48,13 @@ CGFloat vGap = 2;
 
 - (void)layoutSubviews
 {
+    // 242, 175, 79
+    [self setBackgroundColor:[UIColor colorWithRed:(242.0f/255) green:(175.0f/255) blue:(79.0f/255) alpha:1]];
+    
     [[self titleLabel] setFont:[UIFont fontWithName:@"Roboto-Light" size:18.0f]];
-    [[self titleLabel] setTextColor:[UIColor orangeColor]];
-    [[self titleLabel] setShadowColor:[UIColor blackColor]];
-    [[self titleLabel] setShadowOffset:CGSizeMake(0.0, 0.5)];
+    [[self titleLabel] setTextColor:[UIColor colorWithWhite:0.2 alpha:1]];
+    //[[self titleLabel] setShadowColor:[UIColor orangeColor]];
+    //[[self titleLabel] setShadowOffset:CGSizeMake(0.0, 0.5)];
     [[self titleLabel] setText:[newsItem title]];
     [[self titleLabel] setLineBreakMode:NSLineBreakByWordWrapping];
     [[self titleLabel] sizeToFit];
@@ -61,16 +65,20 @@ CGFloat vGap = 2;
     [[self timeAuthorLabel] setText:[[NSString alloc] initWithFormat:@"%@ by %@", [newsItem formattedCreated], [newsItem username]]];
     
     [[[self containerView] layer] setCornerRadius:3.0f];
-    [[[self containerView] layer] setShadowColor:[[UIColor blackColor] CGColor]];
-    [[[self containerView] layer] setShadowOffset:CGSizeMake(1, 1)];
-    [[[self containerView] layer] setShadowRadius:2];
-    [[[self containerView] layer] setShadowOpacity:0.7];
+    
+    [[[self containerBGView] layer] setCornerRadius:3.0f];
+    [[[self containerBGView] layer] setShadowColor:[[UIColor blackColor] CGColor]];
+    [[[self containerBGView] layer] setShadowOffset:CGSizeMake(0, 0)];
+    [[[self containerBGView] layer] setShadowRadius:1];
+    [[[self containerBGView] layer] setShadowOpacity:0.5];
+    [[[self containerBGView] layer] setBackgroundColor:[[UIColor whiteColor] CGColor]];
+    [[[self containerBGView] layer] setShadowPath:[UIBezierPath bezierPathWithRect:[self containerBGView].layer.bounds].CGPath];
     
     if (pointLabel == nil) {
         pointLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
         
         [pointLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:14.0f]];
-        [pointLabel setTextColor:[UIColor colorWithWhite:0.2 alpha:1]];
+        [pointLabel setTextColor:[UIColor colorWithRed:(176.0f/255) green:(106.0f/255) blue:(6.0f/255) alpha:1]];
         [pointLabel setBackgroundColor:[UIColor clearColor]];
     }
     
@@ -78,7 +86,7 @@ CGFloat vGap = 2;
         commentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
         
         [commentLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:14.0f]];
-        [commentLabel setTextColor:[UIColor colorWithWhite:0.2 alpha:1]];
+        [commentLabel setTextColor:[UIColor colorWithRed:(176.0f/255) green:(106.0f/255) blue:(6.0f/255) alpha:1]];
         [commentLabel setBackgroundColor:[UIColor clearColor]];
     }
     
@@ -100,10 +108,10 @@ CGFloat vGap = 2;
     
     if (pointCommentView == nil) {
         pointCommentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
-        [pointCommentView setBackgroundColor:[UIColor colorWithWhite:0.5 alpha:1]];
+        [pointCommentView setBackgroundColor:[UIColor colorWithRed:(239.0f/255) green:(223.0f/255) blue:(193.0f/255) alpha:1]];
         
         dummyView = [[UIView alloc] initWithFrame:CGRectMake(0, commentLabelHeight, 3, 3)];
-        [dummyView setBackgroundColor:[UIColor colorWithWhite:0.5 alpha:1]];
+        [dummyView setBackgroundColor:[UIColor colorWithRed:(239.0f/255) green:(223.0f/255) blue:(193.0f/255) alpha:1]];
         
         [pointCommentView addSubview:dummyView];
         [pointCommentView addSubview:pointLabel];

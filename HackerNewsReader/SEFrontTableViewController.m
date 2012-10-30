@@ -60,8 +60,8 @@ NSMutableArray *newsItems;
                             action:@selector(refreshView:)
                   forControlEvents:UIControlEventValueChanged];
     
-    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:
-                                     [UIImage imageNamed:@"iphone_retina_3.5.png"]];
+    //self.tableView.backgroundView = [[UIImageView alloc] initWithImage:
+    //                                 [UIImage imageNamed:@"iphone_retina_3.5.png"]];
     
     UILabel *navTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
     [navTitle setFont:[UIFont fontWithName:@"Roboto-Regular" size:20.0f]];
@@ -97,10 +97,7 @@ NSMutableArray *newsItems;
 {
     menuItem = [(SEFrontNavigationTopViewController *)self.navigationController currentMenuItem];
     
-    if ((NSNull *)menuItem == [NSNull null]) {
-        menuItem = [NSDictionary dictionaryWithObjectsAndKeys:
-                    @"Front Page", @"name", @"http://api.thriftdb.com/api.hnsearch.com/items/_search?limit=30&filter[fields][type]=submission&sortby=product(points,pow(2,div(div(ms(create_ts,NOW),3600000),1)))%20desc", @"url", @"FrontNavigationTop", @"storyboardId", nil];
-    } else if (menuItem == nil) {
+    if ((NSNull *)menuItem == [NSNull null] || menuItem == nil) {
         menuItem = [NSDictionary dictionaryWithObjectsAndKeys:
                     @"Front Page", @"name", @"http://api.thriftdb.com/api.hnsearch.com/items/_search?limit=30&filter[fields][type]=submission&sortby=product(points,pow(2,div(div(ms(create_ts,NOW),3600000),1)))%20desc", @"url", @"FrontNavigationTop", @"storyboardId", nil];
     }
@@ -151,7 +148,14 @@ NSMutableArray *newsItems;
             
             [newsItems addObject:item];
         }
+        
+        [[self tableView] reloadData];
     }
+}
+
+- (BOOL) shouldAutorotate
+{
+    return NO;
 }
 
 #pragma mark - Table view data source

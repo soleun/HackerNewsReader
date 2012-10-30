@@ -35,6 +35,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                       target:self action:@selector(refreshWebView:)];
+    self.navigationItem.rightBarButtonItem = refreshButton;
+    
     UILabel *navTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
     [navTitle setFont:[UIFont fontWithName:@"Roboto-Regular" size:20.0f]];
     [navTitle setTextColor:[UIColor whiteColor]];
@@ -73,6 +78,26 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)refreshWebView:(id)sender
+{
+    NSLog(@"Refreshed!");
+    
+    NSURL *url = [[NSURL alloc] initWithString:[newsItem url]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url
+                                             cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];
+    urlRequest = request;
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    if (connection) {
+        // Create the NSMutableData to hold the received data.
+        // receivedData is an instance variable declared elsewhere.
+        receivedData = [NSMutableData data];
+    } else {
+        // Inform the user that the connection failed.
+    }
 }
 
 #pragma mark - NSURLConnection

@@ -11,8 +11,18 @@
 @implementation SENewsItemTopWebCell
 
 @synthesize webView, newsItem, receivedData, urlRequest;
+@synthesize timeAuthorLabel = _timeAuthorLabel;
 @synthesize loadingIndicator = _loadingIndicator;
 @synthesize titleTextView = _titleTextView;
+@synthesize pointCommentView;
+@synthesize dummyView;
+@synthesize pointLabel;
+@synthesize commentLabel;
+
+static CGFloat viewWidth = 80;
+static CGFloat viewHeight = 20;
+static CGFloat hGap = 5;
+static CGFloat vGap = 2;
 
 - (void)loadCacheData:(NSData *)data
 {
@@ -66,6 +76,67 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)layoutSubviews
+{
+    [[self timeAuthorLabel] setFont:[UIFont fontWithName:@"Roboto-Light" size:12.0f]];
+    [[self timeAuthorLabel] setTextColor:[UIColor whiteColor]];
+    [[self timeAuthorLabel] setBounds:CGRectMake(0, 0, 290, 21)];
+    [[self timeAuthorLabel] setText:[[NSString alloc] initWithFormat:@"%@ by %@", [newsItem formattedCreated], [newsItem username]]];
+    
+    if (pointLabel == nil) {
+        pointLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
+        
+        [pointLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:14.0f]];
+        [pointLabel setTextColor:[UIColor colorWithRed:(176.0f/255) green:(106.0f/255) blue:(6.0f/255) alpha:1]];
+        [pointLabel setBackgroundColor:[UIColor clearColor]];
+    }
+    
+    if (commentLabel == nil) {
+        commentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
+        
+        [commentLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:14.0f]];
+        [commentLabel setTextColor:[UIColor colorWithRed:(176.0f/255) green:(106.0f/255) blue:(6.0f/255) alpha:1]];
+        [commentLabel setBackgroundColor:[UIColor clearColor]];
+    }
+    
+    
+    [pointLabel setText:[[NSString alloc] initWithFormat:@"C: %@", [newsItem numComments]]];
+    [pointLabel sizeToFit];
+    
+    [commentLabel setText:[[NSString alloc] initWithFormat:@"P: %@", [newsItem points]]];
+    [commentLabel sizeToFit];
+    
+    CGFloat pointLabelWidth = pointLabel.frame.size.width;
+    CGFloat pointLabelHeight = pointLabel.frame.size.height;
+    CGFloat commentLabelWidth = commentLabel.frame.size.width;
+    CGFloat commentLabelHeight = commentLabel.frame.size.height;
+    
+    [pointLabel setFrame:CGRectMake(hGap, vGap, pointLabelWidth, pointLabelHeight)];
+    [commentLabel setFrame:CGRectMake(pointLabelWidth + hGap*2, vGap, commentLabelWidth, commentLabelHeight)];
+    
+    
+    if (pointCommentView == nil) {
+        pointCommentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
+        [pointCommentView setBackgroundColor:[UIColor colorWithRed:(239.0f/255) green:(223.0f/255) blue:(193.0f/255) alpha:1]];
+        
+        dummyView = [[UIView alloc] initWithFrame:CGRectMake(0, commentLabelHeight, 3, 3)];
+        [dummyView setBackgroundColor:[UIColor colorWithRed:(239.0f/255) green:(223.0f/255) blue:(193.0f/255) alpha:1]];
+        
+        [pointCommentView addSubview:dummyView];
+        [pointCommentView addSubview:pointLabel];
+        [pointCommentView addSubview:commentLabel];
+        
+        [[pointCommentView layer] setCornerRadius:3.0f];
+        
+        [self addSubview:pointCommentView];
+    }
+    
+    [pointCommentView setFrame:CGRectMake(self.frame.size.width - commentLabelWidth - pointLabelWidth - hGap*3,
+                                          self.frame.size.height - commentLabelHeight - vGap,
+                                          commentLabelWidth + pointLabelWidth + hGap*3 + 3,
+                                          commentLabelHeight + vGap)];
 }
 
 #pragma mark - NSURLConnection

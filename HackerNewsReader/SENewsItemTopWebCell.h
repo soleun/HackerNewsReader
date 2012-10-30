@@ -18,6 +18,12 @@
 @property (nonatomic, strong) NSURLRequest *urlRequest;
 @property (weak, nonatomic) IBOutlet UITextView *titleTextView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *timeAuthorLabel;
+
+@property (strong, nonatomic) IBOutlet UIView *pointCommentView;
+@property (strong, nonatomic) IBOutlet UIView *dummyView;
+@property (strong, nonatomic) IBOutlet UILabel *pointLabel;
+@property (strong, nonatomic) IBOutlet UILabel *commentLabel;
 
 - (void)loadWebView;
 

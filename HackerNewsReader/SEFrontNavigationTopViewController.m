@@ -41,13 +41,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.navigationBar.tintColor = [UIColor colorWithWhite:0.1 alpha:1];
+    self.navigationBar.tintColor = [UIColor colorWithRed:(133.0f/255) green:(63.0f/255) blue:(0.0f/255) alpha:0.5];
 }
-/*
+
+- (BOOL) shouldAutorotate
+{
+    return NO;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-*/
+
 @end
