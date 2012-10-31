@@ -72,13 +72,16 @@ NSMutableArray *comments;
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
     
     [self refreshTable];
-    
+}
+
+- (void)doneRefresh
+{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM d, h:mm a"];
     NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
                              [formatter stringFromDate:[NSDate date]]];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
-    [refresh endRefreshing];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    [self.refreshControl endRefreshing];
 }
 
 - (void)refreshTable
@@ -133,6 +136,8 @@ NSMutableArray *comments;
         
         [[self tableView] reloadData];
     }
+    
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(doneRefresh) userInfo:nil repeats:NO];
 }
 
 - (BOOL) shouldAutorotate
