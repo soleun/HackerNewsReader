@@ -10,7 +10,7 @@
 #import "SENewsItem.h"
 #import "SEWebViewController.h"
 #import "SEFrontNavigationTopViewController.h"
-#import "SEFrontTableViewController.h"
+#import "SENewsItemTableViewController.h"
 #import "SEAppDelegate.h"
 
 @interface SENewsItemTableViewCell : UITableViewCell

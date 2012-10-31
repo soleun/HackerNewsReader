@@ -2,11 +2,10 @@
 //  SENewsItemTableViewController.m
 //  HackerNewsReader
 //
-//  Created by Sol Eun on 10/16/12.
+//  Created by Sol Eun on 10/14/12.
 //  Copyright (c) 2012 Sol Eun. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
 #import "SENewsItemTableViewController.h"
 
 @interface SENewsItemTableViewController ()
@@ -15,22 +14,30 @@
 
 @implementation SENewsItemTableViewController
 
-@synthesize newsItem;
+@synthesize frontTableView, menuItem;
 
-NSMutableArray *comments;
+NSMutableArray *newsItems;
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showWeb"]) {
-        SEWebViewController *wvc = [segue destinationViewController];
+    if ([[segue identifier] isEqualToString:@"showNewsItem"]) {
+        SENewsItemCommentTableViewController *nitvc = [segue destinationViewController];
+        NSIndexPath *path = [[self frontTableView] indexPathForSelectedRow];
         
-        [wvc setNewsItem:newsItem];
+        SENewsItem *item = [newsItems objectAtIndex:[path row]];
+        
+        [nitvc setNewsItem:item];
     }
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (IBAction)showMenu:(id)sender
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    [self.slidingViewController anchorTopViewTo:ECRight];
+}
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
     }
@@ -40,7 +47,12 @@ NSMutableArray *comments;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self refreshTable];
     
@@ -55,7 +67,7 @@ NSMutableArray *comments;
     [navTitle setFont:[UIFont fontWithName:@"Roboto-Regular" size:20.0f]];
     [navTitle setTextColor:[UIColor whiteColor]];
     [navTitle setBackgroundColor:[UIColor clearColor]];
-    [navTitle setText:[newsItem title]];
+    [navTitle setText:[menuItem objectForKey:@"name"]];
     [navTitle sizeToFit];
     
     [[self navigationItem] setTitleView:navTitle];
@@ -86,12 +98,18 @@ NSMutableArray *comments;
 
 - (void)refreshTable
 {
-    // TODO: Refresh table
+    menuItem = [(SEFrontNavigationTopViewController *)self.navigationController currentMenuItem];
     
-    // Comment fetch url : http://api.thriftdb.com/api.hnsearch.com/items/_search?filter[fields][discussion.sigid]=4691251-ad4a0&sortby=product(points,div(sub(points,1),pow(sum(div(ms(NOW,create_ts),3600000),2.25),1.8)))&limit=100
+    if ((NSNull *)menuItem == [NSNull null] || menuItem == nil) {
+        menuItem = [NSDictionary dictionaryWithObjectsAndKeys:
+                    @"Front Page", @"name", @"http://api.thriftdb.com/api.hnsearch.com/items/_search?limit=30&filter[fields][type]=submission&sortby=product(points,pow(2,div(div(ms(create_ts,NOW),3600000),1)))%20desc", @"url", @"FrontNavigationTop", @"storyboardId", nil];
+    }
+    
+    
+    [self setTitle:[menuItem objectForKey:@"name"]];
     
     NSError *error = nil;
-    NSURL *url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"http://api.thriftdb.com/api.hnsearch.com/items/_search?filter[fields][discussion.sigid]=%@&sortby=product(points,div(sub(points,1),pow(sum(div(ms(NOW,create_ts),3600000),2.25),1.8)))&limit=100", [newsItem sigId]]];
+    NSURL *url = [NSURL URLWithString:[menuItem objectForKey:@"url"]];
     NSString *json = [NSString stringWithContentsOfURL:url
                                               encoding:NSASCIIStringEncoding
                                                  error:&error];
@@ -106,32 +124,32 @@ NSMutableArray *comments;
         
         id results = [jsonDict objectForKey:@"results"];
         
-        comments = [[NSMutableArray alloc] init];
+        newsItems = [[NSMutableArray alloc] init];
         
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-MM-dd'T'hh:mm:ss'Z'"];
         
-        SENewsItemComment *comment;
+        SENewsItem *item;
         for (NSDictionary* result in results) {
             //NSLog(@"%@", [result objectForKey:@"item"]);
-            comment = [[SENewsItemComment alloc] init];
+            item = [[SENewsItem alloc] init];
             //NSLog(@"title: %@", [[result objectForKey:@"item"] objectForKey:@"title"]);
-            [comment setTitle:[[result objectForKey:@"item"] objectForKey:@"title"]];
-            [comment setText:[[result objectForKey:@"item"] objectForKey:@"text"]];
-            [comment setUsername:[[result objectForKey:@"item"] objectForKey:@"username"]];
-            [comment setCreated:[dateFormat dateFromString:[[result objectForKey:@"item"] objectForKey:@"create_ts"]]];
-            [comment setPoints:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"points"] integerValue]]];
-            [comment setNumComments:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"num_comments"] integerValue]]];
+            [item setSigId:[[result objectForKey:@"item"] objectForKey:@"_id"]];
+            [item setTitle:[[result objectForKey:@"item"] objectForKey:@"title"]];
+            [item setUsername:[[result objectForKey:@"item"] objectForKey:@"username"]];
+            [item setCreated:[dateFormat dateFromString:[[result objectForKey:@"item"] objectForKey:@"create_ts"]]];
+            [item setPoints:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"points"] integerValue]]];
+            [item setNumComments:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"num_comments"] integerValue]]];
             //[item setNumComments:[[NSNumberFormatter alloc] numberFromString:[[result objectForKey:@"item"] objectForKey:@"num_comments"]]];
             //NSLog(@"url: %@", [[result objectForKey:@"item"] objectForKey:@"url"]);
             NSString *url = (NSString *)[[result objectForKey:@"item"] objectForKey:@"url"];
             if ((NSNull *)url == [NSNull null]) {
-                [comment setUrl:@"about:blank"];
+                [item setUrl:@"about:blank"];
             } else {
-                [comment setUrl:url];
+                [item setUrl:url];
             }
             
-            [comments addObject:comment];
+            [newsItems addObject:item];
         }
         
         [[self tableView] reloadData];
@@ -145,87 +163,105 @@ NSMutableArray *comments;
     return NO;
 }
 
-#pragma mark - Table View
+#pragma mark - Table view data source
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger rows = [comments count] + 1;
-    
-    if ([comments count] == 0 || !comments) {
-        rows++;
-    }
-    
-    return rows;
+    // Return the number of rows in the section.
+    return [newsItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *CellIdentifier;
+    static NSString *CellIdentifier = @"NewsItemCell";
     
-    if ([indexPath row] == 0) {
-        CellIdentifier = @"NewsItemTopWeb";
-        
-        SENewsItemTopWebCell *cell = (SENewsItemTopWebCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if (cell == nil) {
-            // create cell
-            cell = [[SENewsItemTopWebCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        }
-        
-        [cell setNewsItem:newsItem];
-        [cell loadWebView];
-        
-        [[cell titleTextView] setFont:[UIFont fontWithName:@"Roboto-Light" size:24.0f]];
-        [[cell titleTextView] setTextColor:[UIColor orangeColor]];
-        [[[cell titleTextView] layer] setShadowColor:[[UIColor blackColor] CGColor]];
-        [[[cell titleTextView] layer] setShadowOffset:CGSizeMake(0.0, 1)];
-        [[[cell titleTextView] layer] setShadowOpacity:1.0f];
-        [[[cell titleTextView] layer] setShadowRadius:0.0f];
-        [[cell titleTextView] setText:[newsItem title]];
-        
-        return cell;
-    } else {
-        CellIdentifier = @"NewsItemComment";
-        
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        }
-        
-        NSString *label;
-        if ([comments count] == 0 || !comments) {
-            label = @"No comment";
-        } else {
-            SENewsItemComment *currentItem = [comments objectAtIndex:[indexPath row] - 1];
-            label = [currentItem text];
-        }
-        
-        [[cell textLabel] setText:label];
-        [[cell textLabel] setNumberOfLines:0];
-        [[cell textLabel] setFont:[UIFont fontWithName:@"Roboto-Light" size:14.0f]];
-        
-        return cell;
+    // check for resuable cell
+    SENewsItemTableViewCell *cell = (SENewsItemTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        // create cell
+        cell = [[SENewsItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
+    // set text label for cell
+    SENewsItem *currentItem = [newsItems objectAtIndex:[indexPath row]];
+    [cell setNewsItem:currentItem];
+    
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat height;
-    
-    if ([indexPath row] == 0) {
-        height = 200.0f;
-    } else if ([comments count] == 0 || !comments) {
-        height = 44.0f;
-    } else {
-        SENewsItemComment *currentItem = [comments objectAtIndex:[indexPath row]-1];
-        
-        CGSize titleHeight = [[currentItem text] sizeWithFont:[UIFont fontWithName:@"Roboto-Light" size:14.0f] constrainedToSize:CGSizeMake(300.0f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-        
-        height = titleHeight.height + 20;
-    }
+    SENewsItem *currentItem = [newsItems objectAtIndex:[indexPath row]];
+
+    CGSize titleHeight = [[currentItem title] sizeWithFont:[UIFont fontWithName:@"Roboto-Light" size:18.0f] constrainedToSize:CGSizeMake(290.0f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+
+    NSInteger height = titleHeight.height + 45;
     
     return height;
+}
+
+/*
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+*/
+
+/*
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }   
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
+}
+*/
+
+/*
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+}
+*/
+
+/*
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the item to be re-orderable.
+    return YES;
+}
+*/
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
 }
 
 @end
