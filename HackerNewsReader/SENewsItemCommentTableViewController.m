@@ -121,12 +121,6 @@ bool loadingFlag = NO;
         
         SENewsItemComment *comment;
         for (NSDictionary* result in results) {
-            
-            for (NSInteger lo = 0; lo < 1000; lo++) {
-                NSLog(@"lol");
-            }
-            
-            
             //NSLog(@"%@", [result objectForKey:@"item"]);
             comment = [[SENewsItemComment alloc] init];
             //NSLog(@"title: %@", [[result objectForKey:@"item"] objectForKey:@"title"]);
