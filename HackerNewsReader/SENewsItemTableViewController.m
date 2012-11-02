@@ -81,19 +81,21 @@ NSMutableArray *newsItems;
 
 - (void)refreshView:(UIRefreshControl *)refresh
 {
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@""];
     
-    [self refreshTable];
-}
-
-- (void)doneRefresh
-{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MMM d, h:mm a"];
-    NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
-                             [formatter stringFromDate:[NSDate date]]];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
-    [self.refreshControl endRefreshing];
+    int64_t delay = 1.0f;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        [self refreshTable];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMM d, h:mm a"];
+        NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
+                                 [formatter stringFromDate:[NSDate date]]];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+        [self.refreshControl endRefreshing];
+    });
 }
 
 - (void)refreshTable
@@ -154,8 +156,6 @@ NSMutableArray *newsItems;
         
         [[self tableView] reloadData];
     }
-    
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(doneRefresh) userInfo:nil repeats:NO];
 }
 
 - (BOOL) shouldAutorotate

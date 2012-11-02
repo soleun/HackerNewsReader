@@ -218,9 +218,9 @@
 			isa = PBXGroup;
 			children = (
 				A68618701637BF2D00090B71 /* MenuView */,
-				A686186F1637BF0800090B71 /* NewsItemTableView */,
+				A686186D1637BED900090B71 /* NewsItemTableView */,
+				A686186F1637BF0800090B71 /* NewsItemCommentTableView */,
 				A686186E1637BEF900090B71 /* WebView */,
-				A686186D1637BED900090B71 /* FrontTableView */,
 				A6861816162B880200090B71 /* SEInitialSlidingViewController.h */,
 				A6861817162B880200090B71 /* SEInitialSlidingViewController.m */,
 				A686181E162B885A00090B71 /* SEFrontNavigationTopViewController.h */,
@@ -233,7 +233,7 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		A686186D1637BED900090B71 /* FrontTableView */ = {
+		A686186D1637BED900090B71 /* NewsItemTableView */ = {
 			isa = PBXGroup;
 			children = (
 				A6861834162D06BA00090B71 /* SENewsItemTableViewCell.h */,
@@ -241,7 +241,7 @@
 				A6861823162B930E00090B71 /* SENewsItemTableViewController.h */,
 				A6861824162B930E00090B71 /* SENewsItemTableViewController.m */,
 			);
-			name = FrontTableView;
+			name = NewsItemTableView;
 			sourceTree = "<group>";
 		};
 		A686186E1637BEF900090B71 /* WebView */ = {
@@ -253,7 +253,7 @@
 			name = WebView;
 			sourceTree = "<group>";
 		};
-		A686186F1637BF0800090B71 /* NewsItemTableView */ = {
+		A686186F1637BF0800090B71 /* NewsItemCommentTableView */ = {
 			isa = PBXGroup;
 			children = (
 				A6861842162FDA0E00090B71 /* SENewsItemTopWebCell.h */,
@@ -261,7 +261,7 @@
 				A686183C162E4F6000090B71 /* SENewsItemCommentTableViewController.h */,
 				A686183D162E4F6000090B71 /* SENewsItemCommentTableViewController.m */,
 			);
-			name = NewsItemTableView;
+			name = NewsItemCommentTableView;
 			sourceTree = "<group>";
 		};
 		A68618701637BF2D00090B71 /* MenuView */ = {

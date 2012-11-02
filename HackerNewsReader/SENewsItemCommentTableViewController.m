@@ -18,6 +18,7 @@
 @synthesize newsItem;
 
 NSMutableArray *comments;
+bool loadingFlag = NO;
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -42,7 +43,7 @@ NSMutableArray *comments;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self refreshTable];
+    loadingFlag = YES;
     
     [self.refreshControl addTarget:self
                             action:@selector(refreshView:)
@@ -59,6 +60,11 @@ NSMutableArray *comments;
     [navTitle sizeToFit];
     
     [[self navigationItem] setTitleView:navTitle];
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [self refreshTable];
+        loadingFlag = NO;
+    });
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,19 +75,21 @@ NSMutableArray *comments;
 
 - (void)refreshView:(UIRefreshControl *)refresh
 {
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@""];
     
-    [self refreshTable];
-}
-
-- (void)doneRefresh
-{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MMM d, h:mm a"];
-    NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
-                             [formatter stringFromDate:[NSDate date]]];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
-    [self.refreshControl endRefreshing];
+    int64_t delay = 1.0f;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        [self refreshTable];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMM d, h:mm a"];
+        NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
+                                 [formatter stringFromDate:[NSDate date]]];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+        [self.refreshControl endRefreshing];
+    });
 }
 
 - (void)refreshTable
@@ -113,6 +121,12 @@ NSMutableArray *comments;
         
         SENewsItemComment *comment;
         for (NSDictionary* result in results) {
+            
+            for (NSInteger lo = 0; lo < 1000; lo++) {
+                NSLog(@"lol");
+            }
+            
+            
             //NSLog(@"%@", [result objectForKey:@"item"]);
             comment = [[SENewsItemComment alloc] init];
             //NSLog(@"title: %@", [[result objectForKey:@"item"] objectForKey:@"title"]);
@@ -134,10 +148,8 @@ NSMutableArray *comments;
             [comments addObject:comment];
         }
         
-        [[self tableView] reloadData];
+        [[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }
-    
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(doneRefresh) userInfo:nil repeats:NO];
 }
 
 - (BOOL) shouldAutorotate
@@ -195,7 +207,17 @@ NSMutableArray *comments;
         
         NSString *label;
         if ([comments count] == 0 || !comments) {
-            label = @"No comment";
+            if (loadingFlag) {
+                label = @"Loading Comments...";
+                UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                [activityIndicatorView setFrame:CGRectMake(0, 0, 32.0f, 32.0f)];
+                [activityIndicatorView setCenter:CGPointMake(160.0f, 22.0f)];
+                [activityIndicatorView startAnimating];
+                
+                [cell addSubview:activityIndicatorView];
+            } else {
+                label = @"No comment";
+            }
         } else {
             SENewsItemComment *currentItem = [comments objectAtIndex:[indexPath row] - 1];
             label = [currentItem text];

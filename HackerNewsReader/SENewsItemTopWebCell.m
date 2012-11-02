@@ -129,6 +129,7 @@ static CGFloat vGap = 2;
         [pointCommentView addSubview:commentLabel];
         
         [[pointCommentView layer] setCornerRadius:3.0f];
+        [pointCommentView setUserInteractionEnabled:NO];
         
         [self addSubview:pointCommentView];
     }
