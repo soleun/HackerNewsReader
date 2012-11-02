@@ -92,6 +92,30 @@ bool loadingFlag = NO;
     });
 }
 
+- (NSMutableArray *)structureComments:(NSMutableArray *)finalArray withCommentsArray:(NSMutableArray *)commentsArray withDepth:(NSInteger)depth withSigId:(NSString *)sigId
+{
+    if (!commentsArray || [commentsArray count] == 0) {
+        return commentsArray;
+    }
+    
+    NSInteger i = 0;
+    
+    for (SENewsItemComment *comment in commentsArray) {
+        if ([[comment parentSigId] isEqualToString:sigId] && ![finalArray containsObject:comment]) {
+            i = 0;
+            while (i < depth) {
+                [comment setText:[[NSString alloc] initWithFormat:@"-> %@",[comment text]]];
+                i++;
+            }
+            [comment setDepth:[NSNumber numberWithInt:depth]];
+            [finalArray addObject:comment];
+            [self structureComments:finalArray withCommentsArray:commentsArray withDepth:depth+1 withSigId:[comment sigId]];
+        }
+    }
+    
+    return finalArray;
+}
+
 - (void)refreshTable
 {
     bool loadFinish = NO;
@@ -99,11 +123,13 @@ bool loadingFlag = NO;
     NSInteger start = 0;
     NSInteger total = 0;
     
+    NSMutableArray *commentsArray = [[NSMutableArray alloc] init];
     comments = [[NSMutableArray alloc] init];
     
     while (!loadFinish) {
         NSError *error = nil;
         NSString *urlString = [[NSString alloc] initWithFormat:@"http://api.thriftdb.com/api.hnsearch.com/items/_search?filter[fields][discussion.sigid]=%@&sortby=product(points,div(sub(points,1),pow(sum(div(ms(NOW,create_ts),3600000),2.25),1.8)))&limit=%d&start=%d", [newsItem sigId], increments, start];
+        //NSLog(@"%@",urlString);
         NSURL *url = [NSURL URLWithString:urlString];
         NSString *json = [NSString stringWithContentsOfURL:url
                                                   encoding:NSASCIIStringEncoding
@@ -114,7 +140,7 @@ bool loadingFlag = NO;
             NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
                                                                      options:kNilOptions
                                                                        error:&error];
-
+            
             total = [[jsonDict objectForKey:@"hits"] intValue];
             id results = [jsonDict objectForKey:@"results"];
             
@@ -125,6 +151,8 @@ bool loadingFlag = NO;
             for (NSDictionary* result in results) {
                 comment = [[SENewsItemComment alloc] init];
                 
+                [comment setSigId:[[result objectForKey:@"item"] objectForKey:@"_id"]];
+                [comment setParentSigId:[[result objectForKey:@"item"] objectForKey:@"parent_sigid"]];
                 [comment setTitle:[[result objectForKey:@"item"] objectForKey:@"title"]];
                 [comment setText:[[result objectForKey:@"item"] objectForKey:@"text"]];
                 [comment setUsername:[[result objectForKey:@"item"] objectForKey:@"username"]];
@@ -139,7 +167,7 @@ bool loadingFlag = NO;
                     [comment setUrl:url];
                 }
                 
-                [comments addObject:comment];
+                [commentsArray addObject:comment];
             }
         }
         
@@ -148,6 +176,8 @@ bool loadingFlag = NO;
             loadFinish = YES;
         }
     }
+    
+    comments = [self structureComments:comments withCommentsArray:commentsArray withDepth:0 withSigId:[newsItem sigId]];
     
     [[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }

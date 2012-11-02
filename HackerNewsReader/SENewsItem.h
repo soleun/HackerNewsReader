@@ -20,7 +20,7 @@
 @property (nonatomic) NSNumber *itemId;
 @property (nonatomic) NSNumber *numComments;
 @property (nonatomic) NSNumber *parentId;
-@property (nonatomic) NSNumber *parentSigId;
+@property (nonatomic, strong) NSString *parentSigId;
 @property (nonatomic) NSNumber *points;
 @property (nonatomic, strong) NSDate *created;
 

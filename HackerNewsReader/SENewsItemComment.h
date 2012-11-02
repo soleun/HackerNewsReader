@@ -11,4 +11,6 @@
 
 @interface SENewsItemComment : SENewsItem
 
+@property (nonatomic) NSNumber *depth;
+
 @end
