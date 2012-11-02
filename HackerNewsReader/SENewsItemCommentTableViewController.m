@@ -94,56 +94,62 @@ bool loadingFlag = NO;
 
 - (void)refreshTable
 {
-    // TODO: Refresh table
+    bool loadFinish = NO;
+    NSInteger increments = 100;
+    NSInteger start = 0;
+    NSInteger total = 0;
     
-    // Comment fetch url : http://api.thriftdb.com/api.hnsearch.com/items/_search?filter[fields][discussion.sigid]=4691251-ad4a0&sortby=product(points,div(sub(points,1),pow(sum(div(ms(NOW,create_ts),3600000),2.25),1.8)))&limit=100
+    comments = [[NSMutableArray alloc] init];
     
-    NSError *error = nil;
-    NSURL *url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"http://api.thriftdb.com/api.hnsearch.com/items/_search?filter[fields][discussion.sigid]=%@&sortby=product(points,div(sub(points,1),pow(sum(div(ms(NOW,create_ts),3600000),2.25),1.8)))&limit=100", [newsItem sigId]]];
-    NSString *json = [NSString stringWithContentsOfURL:url
-                                              encoding:NSASCIIStringEncoding
-                                                 error:&error];
-    //NSLog(@"\nJSON: %@ \n Error: %@", json, error);
-    
-    if(!error) {
-        NSData *jsonData = [json dataUsingEncoding:NSASCIIStringEncoding];
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                 options:kNilOptions
-                                                                   error:&error];
-        //NSLog(@"JSON: %@", [jsonDict objectForKey:@"results"]);
+    while (!loadFinish) {
+        NSError *error = nil;
+        NSString *urlString = [[NSString alloc] initWithFormat:@"http://api.thriftdb.com/api.hnsearch.com/items/_search?filter[fields][discussion.sigid]=%@&sortby=product(points,div(sub(points,1),pow(sum(div(ms(NOW,create_ts),3600000),2.25),1.8)))&limit=%d&start=%d", [newsItem sigId], increments, start];
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSString *json = [NSString stringWithContentsOfURL:url
+                                                  encoding:NSASCIIStringEncoding
+                                                     error:&error];
         
-        id results = [jsonDict objectForKey:@"results"];
-        
-        comments = [[NSMutableArray alloc] init];
-        
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"yyyy-MM-dd'T'hh:mm:ss'Z'"];
-        
-        SENewsItemComment *comment;
-        for (NSDictionary* result in results) {
-            //NSLog(@"%@", [result objectForKey:@"item"]);
-            comment = [[SENewsItemComment alloc] init];
-            //NSLog(@"title: %@", [[result objectForKey:@"item"] objectForKey:@"title"]);
-            [comment setTitle:[[result objectForKey:@"item"] objectForKey:@"title"]];
-            [comment setText:[[result objectForKey:@"item"] objectForKey:@"text"]];
-            [comment setUsername:[[result objectForKey:@"item"] objectForKey:@"username"]];
-            [comment setCreated:[dateFormat dateFromString:[[result objectForKey:@"item"] objectForKey:@"create_ts"]]];
-            [comment setPoints:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"points"] integerValue]]];
-            [comment setNumComments:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"num_comments"] integerValue]]];
-            //[item setNumComments:[[NSNumberFormatter alloc] numberFromString:[[result objectForKey:@"item"] objectForKey:@"num_comments"]]];
-            //NSLog(@"url: %@", [[result objectForKey:@"item"] objectForKey:@"url"]);
-            NSString *url = (NSString *)[[result objectForKey:@"item"] objectForKey:@"url"];
-            if ((NSNull *)url == [NSNull null]) {
-                [comment setUrl:@"about:blank"];
-            } else {
-                [comment setUrl:url];
-            }
+        if(!error) {
+            NSData *jsonData = [json dataUsingEncoding:NSASCIIStringEncoding];
+            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                     options:kNilOptions
+                                                                       error:&error];
+
+            total = [[jsonDict objectForKey:@"hits"] intValue];
+            id results = [jsonDict objectForKey:@"results"];
             
-            [comments addObject:comment];
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"yyyy-MM-dd'T'hh:mm:ss'Z'"];
+            
+            SENewsItemComment *comment;
+            for (NSDictionary* result in results) {
+                comment = [[SENewsItemComment alloc] init];
+                
+                [comment setTitle:[[result objectForKey:@"item"] objectForKey:@"title"]];
+                [comment setText:[[result objectForKey:@"item"] objectForKey:@"text"]];
+                [comment setUsername:[[result objectForKey:@"item"] objectForKey:@"username"]];
+                [comment setCreated:[dateFormat dateFromString:[[result objectForKey:@"item"] objectForKey:@"create_ts"]]];
+                [comment setPoints:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"points"] integerValue]]];
+                [comment setNumComments:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"num_comments"] integerValue]]];
+                
+                NSString *url = (NSString *)[[result objectForKey:@"item"] objectForKey:@"url"];
+                if ((NSNull *)url == [NSNull null]) {
+                    [comment setUrl:@"about:blank"];
+                } else {
+                    [comment setUrl:url];
+                }
+                
+                [comments addObject:comment];
+            }
         }
         
-        [[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        start += 100;
+        if (start >= total) {
+            loadFinish = YES;
+        }
     }
+    
+    [[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 - (BOOL) shouldAutorotate
