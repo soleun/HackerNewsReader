@@ -75,7 +75,7 @@ bool loadingFlag = NO;
 
 - (void)refreshView:(UIRefreshControl *)refresh
 {
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@""];
+    refresh.attributedTitle = [[NSAttributedString alloc] init];
     
     int64_t delay = 1.0f;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
