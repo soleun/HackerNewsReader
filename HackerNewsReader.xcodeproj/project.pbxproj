@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A613DB611644EA7500A4597A /* SENewsItemTopTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A613DB601644EA7500A4597A /* SENewsItemTopTextCell.m */; };
 		A64D3AE7163D10D600410239 /* SENewsItemComment.m in Sources */ = {isa = PBXBuildFile; fileRef = A64D3AE6163D10D600410239 /* SENewsItemComment.m */; };
 		A68617F1162B87A900090B71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68617F0162B87A900090B71 /* UIKit.framework */; };
 		A68617F3162B87A900090B71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68617F2162B87A900090B71 /* Foundation.framework */; };
@@ -50,6 +51,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A613DB5F1644EA7500A4597A /* SENewsItemTopTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemTopTextCell.h; sourceTree = "<group>"; };
+		A613DB601644EA7500A4597A /* SENewsItemTopTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemTopTextCell.m; sourceTree = "<group>"; };
 		A64D3AE5163D10D600410239 /* SENewsItemComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemComment.h; sourceTree = "<group>"; };
 		A64D3AE6163D10D600410239 /* SENewsItemComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemComment.m; sourceTree = "<group>"; };
 		A68617EC162B87A900090B71 /* HackerNewsReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNewsReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -258,6 +261,8 @@
 			children = (
 				A6861842162FDA0E00090B71 /* SENewsItemTopWebCell.h */,
 				A6861843162FDA0F00090B71 /* SENewsItemTopWebCell.m */,
+				A613DB5F1644EA7500A4597A /* SENewsItemTopTextCell.h */,
+				A613DB601644EA7500A4597A /* SENewsItemTopTextCell.m */,
 				A686183C162E4F6000090B71 /* SENewsItemCommentTableViewController.h */,
 				A686183D162E4F6000090B71 /* SENewsItemCommentTableViewController.m */,
 			);
@@ -371,6 +376,7 @@
 				A686183E162E4F6000090B71 /* SENewsItemCommentTableViewController.m in Sources */,
 				A6861844162FDA0F00090B71 /* SENewsItemTopWebCell.m in Sources */,
 				A64D3AE7163D10D600410239 /* SENewsItemComment.m in Sources */,
+				A613DB611644EA7500A4597A /* SENewsItemTopTextCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
