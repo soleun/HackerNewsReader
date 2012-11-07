@@ -16,8 +16,8 @@
 @implementation SENewsItemCommentTableViewController
 
 @synthesize newsItem;
+@synthesize comments;
 
-NSMutableArray *comments;
 bool loadingFlag = NO;
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -98,15 +98,8 @@ bool loadingFlag = NO;
         return commentsArray;
     }
     
-    NSInteger i = 0;
-    
     for (SENewsItemComment *comment in commentsArray) {
         if ([[comment parentSigId] isEqualToString:sigId] && ![finalArray containsObject:comment]) {
-            i = 0;
-            while (i < depth) {
-                [comment setText:[[NSString alloc] initWithFormat:@"-> %@",[comment text]]];
-                i++;
-            }
             [comment setDepth:[NSNumber numberWithInt:depth]];
             [finalArray addObject:comment];
             [self structureComments:finalArray withCommentsArray:commentsArray withDepth:depth+1 withSigId:[comment sigId]];
@@ -159,6 +152,7 @@ bool loadingFlag = NO;
                 [comment setCreated:[dateFormat dateFromString:[[result objectForKey:@"item"] objectForKey:@"create_ts"]]];
                 [comment setPoints:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"points"] integerValue]]];
                 [comment setNumComments:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"num_comments"] integerValue]]];
+                [comment setContentHeight:[NSNumber numberWithInt:-1]];
                 
                 NSString *url = (NSString *)[[result objectForKey:@"item"] objectForKey:@"url"];
                 if ((NSNull *)url == [NSNull null]) {
@@ -214,48 +208,49 @@ bool loadingFlag = NO;
             cell = [[SENewsItemTopWebCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         
-        [cell setNewsItem:newsItem];
-        [cell loadWebView];
-        
-        [[cell titleTextView] setFont:[UIFont fontWithName:@"Roboto-Light" size:24.0f]];
-        [[cell titleTextView] setTextColor:[UIColor orangeColor]];
-        [[[cell titleTextView] layer] setShadowColor:[[UIColor blackColor] CGColor]];
-        [[[cell titleTextView] layer] setShadowOffset:CGSizeMake(0.0, 1)];
-        [[[cell titleTextView] layer] setShadowOpacity:1.0f];
-        [[[cell titleTextView] layer] setShadowRadius:0.0f];
-        [[cell titleTextView] setText:[newsItem title]];
+        [cell loadContent:newsItem];
         
         return cell;
-    } else {
-        CellIdentifier = @"NewsItemComment";
+    } else if ([comments count] == 0 || !comments) {
+        CellIdentifier = @"RegularTableCell";
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) {
+            // create cell
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         
         NSString *label;
-        if ([comments count] == 0 || !comments) {
-            if (loadingFlag) {
-                label = @"Loading Comments...";
-                UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-                [activityIndicatorView setFrame:CGRectMake(0, 0, 32.0f, 32.0f)];
-                [activityIndicatorView setCenter:CGPointMake(160.0f, 22.0f)];
-                [activityIndicatorView startAnimating];
-                
-                [cell addSubview:activityIndicatorView];
-            } else {
-                label = @"No comment";
-            }
+        
+        if (loadingFlag) {
+            label = @"Loading Comments...";
+            UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [activityIndicatorView setFrame:CGRectMake(0, 0, 32.0f, 32.0f)];
+            [activityIndicatorView setCenter:CGPointMake(160.0f, 22.0f)];
+            [activityIndicatorView startAnimating];
+            
+            [cell addSubview:activityIndicatorView];
         } else {
-            SENewsItemComment *currentItem = [comments objectAtIndex:[indexPath row] - 1];
-            label = [currentItem text];
+            label = @"No comment";
         }
         
         [[cell textLabel] setText:label];
         [[cell textLabel] setNumberOfLines:0];
         [[cell textLabel] setFont:[UIFont fontWithName:@"Roboto-Light" size:14.0f]];
+        
+        return cell;
+    } else {
+        CellIdentifier = @"NewsItemComment";
+        
+        SENewsItemCommentCell *cell = (SENewsItemCommentCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[SENewsItemCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        
+        NSLog(@"%@", comments);
+        [cell loadContent:comments atIndex:[indexPath row] - 1];
         
         return cell;
     }
@@ -272,9 +267,11 @@ bool loadingFlag = NO;
     } else {
         SENewsItemComment *currentItem = [comments objectAtIndex:[indexPath row]-1];
         
-        CGSize titleHeight = [[currentItem text] sizeWithFont:[UIFont fontWithName:@"Roboto-Light" size:14.0f] constrainedToSize:CGSizeMake(300.0f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-        
-        height = titleHeight.height + 20;
+        if ([[currentItem contentHeight] intValue] == -1) {
+            height = 44.0f;
+        } else {
+            height = [[currentItem contentHeight] floatValue] + 1.0f;
+        }
     }
     
     return height;

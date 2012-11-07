@@ -25,6 +25,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *pointLabel;
 @property (strong, nonatomic) IBOutlet UILabel *commentLabel;
 
-- (void)loadWebView;
+- (void)loadContent:(SENewsItem *)n;
 
 @end

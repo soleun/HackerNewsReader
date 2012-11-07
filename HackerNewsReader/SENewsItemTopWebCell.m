@@ -78,6 +78,20 @@ static CGFloat vGap = 2;
     // Configure the view for the selected state
 }
 
+- (void)loadContent:(SENewsItem *)n
+{
+    [self setNewsItem:n];
+    [self loadWebView];
+    
+    [[self titleTextView] setFont:[UIFont fontWithName:@"Roboto-Light" size:24.0f]];
+    [[self titleTextView] setTextColor:[UIColor orangeColor]];
+    [[[self titleTextView] layer] setShadowColor:[[UIColor blackColor] CGColor]];
+    [[[self titleTextView] layer] setShadowOffset:CGSizeMake(0.0, 1)];
+    [[[self titleTextView] layer] setShadowOpacity:1.0f];
+    [[[self titleTextView] layer] setShadowRadius:0.0f];
+    [[self titleTextView] setText:[newsItem title]];
+}
+
 - (void)layoutSubviews
 {
     [[self timeAuthorLabel] setFont:[UIFont fontWithName:@"Roboto-Light" size:12.0f]];

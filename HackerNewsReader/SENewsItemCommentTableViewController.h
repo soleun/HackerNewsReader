@@ -12,9 +12,11 @@
 #import "SENewsItemComment.h"
 #import "SEWebViewController.h"
 #import "SENewsItemTopWebCell.h"
+#import "SENewsItemCommentCell.h"
 
 @interface SENewsItemCommentTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) SENewsItem *newsItem;
+@property (nonatomic, strong) NSMutableArray *comments;
 
 @end
