@@ -11,6 +11,7 @@
 @implementation SENewsItemCommentCell
 
 @synthesize newsItemCommentsArray, newsItemCommentIndex, commentView;
+@synthesize timeAuthorLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -44,6 +45,15 @@
         
         [self addSubview:commentView];
         
+        timeAuthorLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 21)];
+        UIFont *timeAuthorFont = [UIFont fontWithName:@"Roboto-Light" size:12.0f];
+        
+        [[self timeAuthorLabel] setFont:timeAuthorFont];
+        [[self timeAuthorLabel] setTextColor:[UIColor grayColor]];
+        [[self timeAuthorLabel] setBackgroundColor:[UIColor whiteColor]];
+        
+        [self addSubview:timeAuthorLabel];
+        
         NSLog(@"%f", commentView.frame.size.height);
     }
 }
@@ -68,6 +78,9 @@
     NSLog(@"%@", htmlString);
     
     [commentView loadHTMLString:htmlString baseURL:nil];
+    
+    [[self timeAuthorLabel] setFrame:CGRectMake(padding, [[comment contentHeight] floatValue], width, 21)];
+    [[self timeAuthorLabel] setText:[[NSString alloc] initWithFormat:@"  %@ by %@", [comment formattedCreated], [comment username]]];
 }
 
 #pragma mark - Web view delegate

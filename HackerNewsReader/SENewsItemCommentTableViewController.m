@@ -270,7 +270,7 @@ bool loadingFlag = NO;
         if ([[currentItem contentHeight] intValue] == -1) {
             height = 44.0f;
         } else {
-            height = [[currentItem contentHeight] floatValue] + 1.0f;
+            height = [[currentItem contentHeight] floatValue] + 22.0f;
         }
     }
     
