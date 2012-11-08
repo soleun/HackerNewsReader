@@ -187,6 +187,8 @@ static CGFloat vGap = 2;
     
     [[overlay layer] setMask:[maskImageView layer]];
     [overlay setBackgroundColor:color];
+    [[overlay layer] setShouldRasterize:YES];
+    [[overlay layer] setRasterizationScale:[[UIScreen mainScreen] scale]];
     
     [resultView addSubview:overlay];
     

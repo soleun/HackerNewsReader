@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UIWebView *commentView;
 @property (strong, nonatomic) IBOutlet NSMutableArray *newsItemCommentsArray;
 @property (strong, nonatomic) IBOutlet UILabel *timeAuthorLabel;
+@property (strong, nonatomic) IBOutlet UIView *replyIconView;
 @property (nonatomic) NSInteger newsItemCommentIndex;
 
 - (void)loadContent:(NSMutableArray *)comments atIndex:(NSInteger)i;

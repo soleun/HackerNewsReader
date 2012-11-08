@@ -12,8 +12,9 @@
 
 @synthesize newsItemCommentsArray, newsItemCommentIndex, commentView;
 @synthesize timeAuthorLabel;
+@synthesize replyIconView;
 
-const CGFloat paddingWidth = 10.0f;
+const CGFloat paddingWidth = 15.0f;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -56,6 +57,10 @@ const CGFloat paddingWidth = 10.0f;
         
         [self addSubview:timeAuthorLabel];
         
+        replyIconView = [self tintImage:@"reply.png" withColor:[UIColor grayColor] withSize:CGSizeMake(12.0f, 12.0f)];
+        
+        [self addSubview:replyIconView];
+        
         NSLog(@"%f", commentView.frame.size.height);
     }
 }
@@ -80,8 +85,35 @@ const CGFloat paddingWidth = 10.0f;
     
     [commentView loadHTMLString:htmlString baseURL:nil];
     
+    
+    [[self replyIconView] setFrame:CGRectMake(padding - paddingWidth + 2, 10.0f, 12.0f, 12.0f)];
+    
     [[self timeAuthorLabel] setFrame:CGRectMake(padding, [[comment contentHeight] floatValue], width, 21)];
     [[self timeAuthorLabel] setText:[[NSString alloc] initWithFormat:@"  %@ by %@", [comment formattedCreated], [comment username]]];
+}
+
+- (UIView *)tintImage:(NSString *)imageName withColor:(UIColor *)color withSize:(CGSize)size
+{
+    UIView *resultView = [[UIView alloc] init];
+    UIImage *myImage = [UIImage imageNamed:imageName];
+    
+    UIImageView *originalImageView = [[UIImageView alloc] initWithImage:myImage];
+    [originalImageView setFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
+    [resultView addSubview:originalImageView];
+    
+    UIView *overlay = [[UIView alloc] initWithFrame:[originalImageView frame]];
+    
+    UIImageView *maskImageView = [[UIImageView alloc] initWithImage:myImage];
+    [maskImageView setFrame:[overlay bounds]];
+    
+    [[overlay layer] setMask:[maskImageView layer]];
+    [overlay setBackgroundColor:color];
+    [[overlay layer] setShouldRasterize:YES];
+    [[overlay layer] setRasterizationScale:[[UIScreen mainScreen] scale]];
+    
+    [resultView addSubview:overlay];
+    
+    return resultView;
 }
 
 #pragma mark - Web view delegate

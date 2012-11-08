@@ -55,6 +55,8 @@
 		A6C4B509164B8A63006BAEEB /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C4B507164B8A63006BAEEB /* comment.png */; };
 		A6C4B50A164B8A63006BAEEB /* comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C4B508164B8A63006BAEEB /* comment@2x.png */; };
 		A6E28D701649E5E80038DCA9 /* SENewsItemCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E28D6F1649E5E80038DCA9 /* SENewsItemCommentCell.m */; };
+		A6E6771B164C0EEC007D0957 /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E67719164C0EEC007D0957 /* reply.png */; };
+		A6E6771C164C0EEC007D0957 /* reply@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E6771A164C0EEC007D0957 /* reply@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +126,8 @@
 		A6C4B508164B8A63006BAEEB /* comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment@2x.png"; sourceTree = "<group>"; };
 		A6E28D6E1649E5E80038DCA9 /* SENewsItemCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemCommentCell.h; sourceTree = "<group>"; };
 		A6E28D6F1649E5E80038DCA9 /* SENewsItemCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemCommentCell.m; sourceTree = "<group>"; };
+		A6E67719164C0EEC007D0957 /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply.png; sourceTree = "<group>"; };
+		A6E6771A164C0EEC007D0957 /* reply@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +311,8 @@
 		A68D55D1164B7E2600BEAB97 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				A6E67719164C0EEC007D0957 /* reply.png */,
+				A6E6771A164C0EEC007D0957 /* reply@2x.png */,
 				A6C4B507164B8A63006BAEEB /* comment.png */,
 				A6C4B508164B8A63006BAEEB /* comment@2x.png */,
 				A6C2E6E1164B897F00E0CC81 /* point.png */,
@@ -397,6 +403,8 @@
 				A6C2E6E4164B897F00E0CC81 /* point@2x.png in Resources */,
 				A6C4B509164B8A63006BAEEB /* comment.png in Resources */,
 				A6C4B50A164B8A63006BAEEB /* comment@2x.png in Resources */,
+				A6E6771B164C0EEC007D0957 /* reply.png in Resources */,
+				A6E6771C164C0EEC007D0957 /* reply@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
