@@ -18,6 +18,8 @@
 @synthesize dummyView;
 @synthesize pointLabel;
 @synthesize commentLabel;
+@synthesize pointIconView;
+@synthesize commentIconView;
 
 static CGFloat viewWidth = 80;
 static CGFloat viewHeight = 20;
@@ -116,19 +118,20 @@ static CGFloat vGap = 2;
     }
     
     
-    [pointLabel setText:[[NSString alloc] initWithFormat:@"C: %@", [newsItem numComments]]];
+    [pointLabel setText:[[NSString alloc] initWithFormat:@"%@", [newsItem points]]];
     [pointLabel sizeToFit];
     
-    [commentLabel setText:[[NSString alloc] initWithFormat:@"P: %@", [newsItem points]]];
+    [commentLabel setText:[[NSString alloc] initWithFormat:@"%@", [newsItem numComments]]];
     [commentLabel sizeToFit];
     
     CGFloat pointLabelWidth = pointLabel.frame.size.width;
     CGFloat pointLabelHeight = pointLabel.frame.size.height;
     CGFloat commentLabelWidth = commentLabel.frame.size.width;
     CGFloat commentLabelHeight = commentLabel.frame.size.height;
+    CGFloat iconSize = 12.0f;
     
-    [pointLabel setFrame:CGRectMake(hGap, vGap, pointLabelWidth, pointLabelHeight)];
-    [commentLabel setFrame:CGRectMake(pointLabelWidth + hGap*2, vGap, commentLabelWidth, commentLabelHeight)];
+    [pointLabel setFrame:CGRectMake(hGap + 3 + iconSize, vGap, pointLabelWidth, pointLabelHeight)];
+    [commentLabel setFrame:CGRectMake(pointLabelWidth + iconSize*2 + hGap*2 + 6, vGap, commentLabelWidth, commentLabelHeight)];
     
     
     if (pointCommentView == nil) {
@@ -138,20 +141,51 @@ static CGFloat vGap = 2;
         dummyView = [[UIView alloc] initWithFrame:CGRectMake(0, commentLabelHeight, 3, 3)];
         [dummyView setBackgroundColor:[UIColor colorWithRed:(239.0f/255) green:(223.0f/255) blue:(193.0f/255) alpha:1]];
         
+        pointIconView = [self tintImage:@"point.png" withColor:[UIColor colorWithRed:(176.0f/255) green:(106.0f/255) blue:(6.0f/255) alpha:1] withSize:CGSizeMake(iconSize, iconSize)];
+        commentIconView = [self tintImage:@"comment.png" withColor:[UIColor colorWithRed:(176.0f/255) green:(106.0f/255) blue:(6.0f/255) alpha:1] withSize:CGSizeMake(iconSize, iconSize)];
+        
+        [pointCommentView addSubview:pointIconView];
+        [pointCommentView addSubview:commentIconView];
         [pointCommentView addSubview:dummyView];
         [pointCommentView addSubview:pointLabel];
         [pointCommentView addSubview:commentLabel];
         
         [[pointCommentView layer] setCornerRadius:3.0f];
-        [pointCommentView setUserInteractionEnabled:NO];
         
         [self addSubview:pointCommentView];
     }
     
-    [pointCommentView setFrame:CGRectMake(self.frame.size.width - commentLabelWidth - pointLabelWidth - hGap*3,
+    [pointIconView setFrame:CGRectMake(hGap, vGap+2, iconSize, iconSize)];
+    [commentIconView setFrame:CGRectMake(hGap*2 + 3 + iconSize + pointLabelWidth, vGap+2, iconSize, iconSize)];
+    
+    CGFloat finalWidth = commentLabelWidth + pointLabelWidth + iconSize*2 + hGap*3 + 6;
+    
+    [pointCommentView setFrame:CGRectMake(self.frame.size.width - finalWidth,
                                           self.frame.size.height - commentLabelHeight - vGap,
-                                          commentLabelWidth + pointLabelWidth + hGap*3 + 3,
+                                          finalWidth + 3,
                                           commentLabelHeight + vGap)];
+}
+
+- (UIView *)tintImage:(NSString *)imageName withColor:(UIColor *)color withSize:(CGSize)size
+{
+    UIView *resultView = [[UIView alloc] init];
+    UIImage *myImage = [UIImage imageNamed:imageName];
+    
+    UIImageView *originalImageView = [[UIImageView alloc] initWithImage:myImage];
+    [originalImageView setFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
+    [resultView addSubview:originalImageView];
+    
+    UIView *overlay = [[UIView alloc] initWithFrame:[originalImageView frame]];
+    
+    UIImageView *maskImageView = [[UIImageView alloc] initWithImage:myImage];
+    [maskImageView setFrame:[overlay bounds]];
+    
+    [[overlay layer] setMask:[maskImageView layer]];
+    [overlay setBackgroundColor:color];
+    
+    [resultView addSubview:overlay];
+    
+    return resultView;
 }
 
 #pragma mark - NSURLConnection

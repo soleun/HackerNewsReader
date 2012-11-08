@@ -154,6 +154,7 @@
                     </refreshControl>
                     <connections>
                         <outlet property="frontTableView" destination="sUz-Xg-ODb" id="OCu-je-I4P"/>
+                        <outlet property="menuButton" destination="FQE-AE-jvZ" id="4Hj-dH-LRn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jjR-ZQ-A1f" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -15,6 +15,7 @@
 @interface SENewsItemTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *frontTableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 @property (nonatomic, strong) NSDictionary *menuItem;
 
 - (IBAction)showMenu:(id)sender;

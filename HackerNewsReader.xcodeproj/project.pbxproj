@@ -48,6 +48,12 @@
 		A68618691636547200090B71 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686185316364C3E00090B71 /* Roboto-Thin.ttf */; };
 		A686186A1636547200090B71 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686185416364C3E00090B71 /* Roboto-ThinItalic.ttf */; };
 		A686186C163657F300090B71 /* iphone_retina_3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = A686186B163657F300090B71 /* iphone_retina_3.5.png */; };
+		A6C2E6DF164B808200E0CC81 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C2E6DD164B808200E0CC81 /* menu.png */; };
+		A6C2E6E0164B808200E0CC81 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C2E6DE164B808200E0CC81 /* menu@2x.png */; };
+		A6C2E6E3164B897F00E0CC81 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C2E6E1164B897F00E0CC81 /* point.png */; };
+		A6C2E6E4164B897F00E0CC81 /* point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C2E6E2164B897F00E0CC81 /* point@2x.png */; };
+		A6C4B509164B8A63006BAEEB /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C4B507164B8A63006BAEEB /* comment.png */; };
+		A6C4B50A164B8A63006BAEEB /* comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C4B508164B8A63006BAEEB /* comment@2x.png */; };
 		A6E28D701649E5E80038DCA9 /* SENewsItemCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E28D6F1649E5E80038DCA9 /* SENewsItemCommentCell.m */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +116,12 @@
 		A686185316364C3E00090B71 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		A686185416364C3E00090B71 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		A686186B163657F300090B71 /* iphone_retina_3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone_retina_3.5.png; sourceTree = "<group>"; };
+		A6C2E6DD164B808200E0CC81 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		A6C2E6DE164B808200E0CC81 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		A6C2E6E1164B897F00E0CC81 /* point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point.png; sourceTree = "<group>"; };
+		A6C2E6E2164B897F00E0CC81 /* point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "point@2x.png"; sourceTree = "<group>"; };
+		A6C4B507164B8A63006BAEEB /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
+		A6C4B508164B8A63006BAEEB /* comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment@2x.png"; sourceTree = "<group>"; };
 		A6E28D6E1649E5E80038DCA9 /* SENewsItemCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemCommentCell.h; sourceTree = "<group>"; };
 		A6E28D6F1649E5E80038DCA9 /* SENewsItemCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemCommentCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,23 +185,9 @@
 		A68617F7162B87A900090B71 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A68D55D1164B7E2600BEAB97 /* Icons */,
+				A68D55CF164B7E1800BEAB97 /* Fonts */,
 				A686186B163657F300090B71 /* iphone_retina_3.5.png */,
-				A686184516364C3D00090B71 /* Roboto-Black.ttf */,
-				A686184616364C3D00090B71 /* Roboto-BlackItalic.ttf */,
-				A686184716364C3D00090B71 /* Roboto-Bold.ttf */,
-				A686184816364C3D00090B71 /* Roboto-BoldCondensed.ttf */,
-				A686184916364C3D00090B71 /* Roboto-BoldCondensedItalic.ttf */,
-				A686184A16364C3E00090B71 /* Roboto-BoldItalic.ttf */,
-				A686184B16364C3E00090B71 /* Roboto-Condensed.ttf */,
-				A686184C16364C3E00090B71 /* Roboto-CondensedItalic.ttf */,
-				A686184D16364C3E00090B71 /* Roboto-Italic.ttf */,
-				A686184E16364C3E00090B71 /* Roboto-Light.ttf */,
-				A686184F16364C3E00090B71 /* Roboto-LightItalic.ttf */,
-				A686185016364C3E00090B71 /* Roboto-Medium.ttf */,
-				A686185116364C3E00090B71 /* Roboto-MediumItalic.ttf */,
-				A686185216364C3E00090B71 /* Roboto-Regular.ttf */,
-				A686185316364C3E00090B71 /* Roboto-Thin.ttf */,
-				A686185416364C3E00090B71 /* Roboto-ThinItalic.ttf */,
 				A68617F8162B87A900090B71 /* HackerNewsReader-Info.plist */,
 				A68617F9162B87A900090B71 /* InfoPlist.strings */,
 				A68617FC162B87A900090B71 /* main.m */,
@@ -283,6 +281,42 @@
 			name = MenuView;
 			sourceTree = "<group>";
 		};
+		A68D55CF164B7E1800BEAB97 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A686184516364C3D00090B71 /* Roboto-Black.ttf */,
+				A686184616364C3D00090B71 /* Roboto-BlackItalic.ttf */,
+				A686184716364C3D00090B71 /* Roboto-Bold.ttf */,
+				A686184816364C3D00090B71 /* Roboto-BoldCondensed.ttf */,
+				A686184916364C3D00090B71 /* Roboto-BoldCondensedItalic.ttf */,
+				A686184A16364C3E00090B71 /* Roboto-BoldItalic.ttf */,
+				A686184B16364C3E00090B71 /* Roboto-Condensed.ttf */,
+				A686184C16364C3E00090B71 /* Roboto-CondensedItalic.ttf */,
+				A686184D16364C3E00090B71 /* Roboto-Italic.ttf */,
+				A686184E16364C3E00090B71 /* Roboto-Light.ttf */,
+				A686184F16364C3E00090B71 /* Roboto-LightItalic.ttf */,
+				A686185016364C3E00090B71 /* Roboto-Medium.ttf */,
+				A686185116364C3E00090B71 /* Roboto-MediumItalic.ttf */,
+				A686185216364C3E00090B71 /* Roboto-Regular.ttf */,
+				A686185316364C3E00090B71 /* Roboto-Thin.ttf */,
+				A686185416364C3E00090B71 /* Roboto-ThinItalic.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		A68D55D1164B7E2600BEAB97 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				A6C4B507164B8A63006BAEEB /* comment.png */,
+				A6C4B508164B8A63006BAEEB /* comment@2x.png */,
+				A6C2E6E1164B897F00E0CC81 /* point.png */,
+				A6C2E6E2164B897F00E0CC81 /* point@2x.png */,
+				A6C2E6DD164B808200E0CC81 /* menu.png */,
+				A6C2E6DE164B808200E0CC81 /* menu@2x.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -357,6 +391,12 @@
 				A6861807162B87A900090B71 /* Default-568h@2x.png in Resources */,
 				A686181A162B881700090B71 /* iPhone.storyboard in Resources */,
 				A686186C163657F300090B71 /* iphone_retina_3.5.png in Resources */,
+				A6C2E6DF164B808200E0CC81 /* menu.png in Resources */,
+				A6C2E6E0164B808200E0CC81 /* menu@2x.png in Resources */,
+				A6C2E6E3164B897F00E0CC81 /* point.png in Resources */,
+				A6C2E6E4164B897F00E0CC81 /* point@2x.png in Resources */,
+				A6C4B509164B8A63006BAEEB /* comment.png in Resources */,
+				A6C4B50A164B8A63006BAEEB /* comment@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +449,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -424,6 +465,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -437,6 +479,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -445,6 +488,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

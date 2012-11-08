@@ -24,6 +24,8 @@
 @property (strong, nonatomic) IBOutlet UIView *dummyView;
 @property (strong, nonatomic) IBOutlet UILabel *pointLabel;
 @property (strong, nonatomic) IBOutlet UILabel *commentLabel;
+@property (strong, nonatomic) IBOutlet UIView *pointIconView;
+@property (strong, nonatomic) IBOutlet UIView *commentIconView;
 
 - (void)loadContent:(SENewsItem *)n;
 
