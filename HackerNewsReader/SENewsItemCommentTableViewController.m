@@ -122,7 +122,7 @@ bool loadingFlag = NO;
     while (!loadFinish) {
         NSError *error = nil;
         NSString *urlString = [[NSString alloc] initWithFormat:@"http://api.thriftdb.com/api.hnsearch.com/items/_search?filter[fields][discussion.sigid]=%@&sortby=product(points,div(sub(points,1),pow(sum(div(ms(NOW,create_ts),3600000),2.25),1.8)))&limit=%d&start=%d", [newsItem sigId], increments, start];
-        //NSLog(@"%@",urlString);
+        
         NSURL *url = [NSURL URLWithString:urlString];
         NSString *json = [NSString stringWithContentsOfURL:url
                                                   encoding:NSASCIIStringEncoding
@@ -249,7 +249,6 @@ bool loadingFlag = NO;
             cell = [[SENewsItemCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         
-        NSLog(@"%@", comments);
         [cell loadContent:comments atIndex:[indexPath row] - 1];
         
         return cell;

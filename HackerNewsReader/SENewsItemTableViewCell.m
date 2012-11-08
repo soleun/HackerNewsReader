@@ -41,11 +41,7 @@ static CGFloat vGap = 2;
 
 - (void)prepareForReuse
 {
-    //[pointLabel removeFromSuperview];
-    //[commentLabel removeFromSuperview];
-    //[dummyView removeFromSuperview];
     
-    //[pointCommentView removeFromSuperview];
 }
 
 - (void)layoutSubviews
@@ -60,8 +56,6 @@ static CGFloat vGap = 2;
     
     [[self titleLabel] setFont:[UIFont fontWithName:@"Roboto-Light" size:18.0f]];
     [[self titleLabel] setTextColor:[UIColor colorWithWhite:0.2 alpha:1]];
-    //[[self titleLabel] setShadowColor:[UIColor orangeColor]];
-    //[[self titleLabel] setShadowOffset:CGSizeMake(0.0, 0.5)];
     [[self titleLabel] setText:[newsItem title]];
     [[self titleLabel] setLineBreakMode:NSLineBreakByWordWrapping];
     [[self titleLabel] sizeToFit];
@@ -162,6 +156,8 @@ static CGFloat vGap = 2;
     
     [[overlay layer] setMask:[maskImageView layer]];
     [overlay setBackgroundColor:color];
+    [[overlay layer] setShouldRasterize:YES];
+    [[overlay layer] setRasterizationScale:[[UIScreen mainScreen] scale]];
     
     [resultView addSubview:overlay];
     

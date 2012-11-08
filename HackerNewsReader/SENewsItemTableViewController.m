@@ -215,6 +215,9 @@ NSMutableArray *newsItems;
     SENewsItem *currentItem = [newsItems objectAtIndex:[indexPath row]];
     [cell setNewsItem:currentItem];
     
+    [[cell layer] setShouldRasterize:YES];
+    [[cell layer] setRasterizationScale:[[UIScreen mainScreen] scale]];
+    
     return cell;
 }
 

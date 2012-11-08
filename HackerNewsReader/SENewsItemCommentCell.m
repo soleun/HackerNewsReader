@@ -13,6 +13,8 @@
 @synthesize newsItemCommentsArray, newsItemCommentIndex, commentView;
 @synthesize timeAuthorLabel;
 
+const CGFloat paddingWidth = 10.0f;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -36,7 +38,7 @@
     
     if (!commentView) {
         SENewsItemComment *comment = [newsItemCommentsArray objectAtIndex:newsItemCommentIndex];
-        float padding = [[comment depth] floatValue]*20.0f;
+        float padding = [[comment depth] floatValue] * paddingWidth;
         float width = 320.0f - padding;
         
         commentView = [[UIWebView alloc] initWithFrame:CGRectMake(padding, 0, width, 43)];
@@ -61,7 +63,7 @@
 - (void)layoutSubviews
 {
     SENewsItemComment *comment = [newsItemCommentsArray objectAtIndex:newsItemCommentIndex];
-    float padding = [[comment depth] floatValue]*20.0f;
+    float padding = [[comment depth] floatValue] * paddingWidth;
     float width = 320.0f - padding;
     
     [commentView setFrame:CGRectMake(padding, 0, width, [[comment contentHeight] floatValue])];
@@ -75,7 +77,6 @@
                             "</head> \n"
                             "<body>%@</body> \n"
                             "</html>", @"Roboto-Light", @"14px", [[newsItemCommentsArray objectAtIndex:newsItemCommentIndex] text]];
-    NSLog(@"%@", htmlString);
     
     [commentView loadHTMLString:htmlString baseURL:nil];
     
@@ -88,7 +89,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     SENewsItemComment *comment = [newsItemCommentsArray objectAtIndex:newsItemCommentIndex];
-    float padding = [[comment depth] floatValue]*20.0f;
+    float padding = [[comment depth] floatValue] * paddingWidth;
     float width = 320.0f - padding;
     
     if ([[comment contentHeight] intValue] == -1) {
@@ -103,7 +104,8 @@
         
         [comment setContentHeight:[[NSNumber alloc] initWithFloat:fittingSize.height]];
         
-        NSLog(@"size: %f, %f", fittingSize.width, fittingSize.height);
+        [[commentView layer] setShouldRasterize:YES];
+        [[commentView layer] setRasterizationScale:[[UIScreen mainScreen] scale]];
         
         [(UITableView *)self.superview beginUpdates];
         [(UITableView *)self.superview endUpdates];
