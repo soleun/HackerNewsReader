@@ -24,6 +24,8 @@
 @property (nonatomic) NSNumber *points;
 @property (nonatomic, strong) NSDate *created;
 
+@property (nonatomic) NSNumber *contentHeight;
+
 - (BOOL)hasUrl;
 - (NSString *)formattedCreated;
 

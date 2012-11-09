@@ -12,6 +12,7 @@
 #import "SENewsItemComment.h"
 #import "SEWebViewController.h"
 #import "SENewsItemTopWebCell.h"
+#import "SENewsItemTopTextCell.h"
 #import "SENewsItemCommentCell.h"
 
 @interface SENewsItemCommentTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>

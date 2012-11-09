@@ -241,15 +241,27 @@
                                     <outlet property="webView" destination="Nd5-8n-laa" id="dLM-rl-RgE"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NewsItemTopText" rowHeight="151" id="PES-W0-06C" customClass="SENewsItemTopTextCell">
-                                <rect key="frame" x="0.0" y="222" width="320" height="151"/>
+                            <tableViewCell clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NewsItemTopText" rowHeight="200" id="PES-W0-06C" customClass="SENewsItemTopTextCell">
+                                <rect key="frame" x="0.0" y="222" width="320" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uY5-rw-cO1">
+                                            <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaQ-MS-CRt">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="Mut-Bs-Rb0"/>
+                                                <constraint firstAttribute="width" constant="290" id="NEj-6h-cRI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMJ-4M-pFB">
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="310" id="HUA-Pl-OOJ"/>
                                                 <constraint firstAttribute="height" constant="150" id="eYq-G6-4SU"/>
@@ -263,12 +275,22 @@
                                 </view>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="TMJ-4M-pFB" firstAttribute="top" secondItem="PES-W0-06C" secondAttribute="top" type="default" id="0tj-QA-cnK"/>
-                                    <constraint firstItem="TMJ-4M-pFB" firstAttribute="centerX" secondItem="PES-W0-06C" secondAttribute="centerX" type="default" id="AgK-Hi-C5g"/>
+                                    <constraint firstAttribute="bottom" secondItem="eaQ-MS-CRt" secondAttribute="bottom" type="user" id="1cc-SN-ntP"/>
+                                    <constraint firstItem="uY5-rw-cO1" firstAttribute="centerX" secondItem="TMJ-4M-pFB" secondAttribute="centerX" type="default" id="9N4-tE-UjE"/>
+                                    <constraint firstItem="uY5-rw-cO1" firstAttribute="bottom" secondItem="PES-W0-06C" secondAttribute="bottom" type="default" id="B8E-LF-3Wc"/>
+                                    <constraint firstItem="uY5-rw-cO1" firstAttribute="trailing" secondItem="PES-W0-06C" secondAttribute="trailing" type="default" id="HMS-4e-UUr"/>
+                                    <constraint firstItem="uY5-rw-cO1" firstAttribute="leading" secondItem="PES-W0-06C" secondAttribute="leading" type="default" id="Kkj-GB-PiD"/>
+                                    <constraint firstItem="TMJ-4M-pFB" firstAttribute="top" secondItem="PES-W0-06C" secondAttribute="top" constant="10" id="MGm-XF-5bZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="eaQ-MS-CRt" secondAttribute="trailing" constant="20" type="default" id="etI-eN-4lw"/>
+                                    <constraint firstItem="uY5-rw-cO1" firstAttribute="top" secondItem="PES-W0-06C" secondAttribute="top" type="default" id="tym-LC-NPU"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="timeAuthorLabel" destination="eaQ-MS-CRt" id="aA0-FJ-gTS"/>
+                                    <outlet property="titleTextView" destination="TMJ-4M-pFB" id="Ab1-VM-EoY"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NewsItemComment" id="s25-EM-75b" customClass="SENewsItemCommentCell">
-                                <rect key="frame" x="0.0" y="373" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="422" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -422,6 +444,17 @@
         </class>
         <class className="SENewsItemTopTextCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SENewsItemTopTextCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="commentIconView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="commentLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dummyView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pointCommentView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pointIconView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pointLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="textView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="timeAuthorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleTextView" candidateClass="UITextView"/>
+            </relationships>
         </class>
         <class className="SENewsItemTopWebCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SENewsItemTopWebCell.h"/>

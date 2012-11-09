@@ -139,7 +139,6 @@ NSMutableArray *newsItems;
         NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
                                                                  options:kNilOptions
                                                                    error:&error];
-        //NSLog(@"JSON: %@", [jsonDict objectForKey:@"results"]);
         
         id results = [jsonDict objectForKey:@"results"];
         
@@ -150,17 +149,16 @@ NSMutableArray *newsItems;
         
         SENewsItem *item;
         for (NSDictionary* result in results) {
-            //NSLog(@"%@", [result objectForKey:@"item"]);
             item = [[SENewsItem alloc] init];
-            //NSLog(@"title: %@", [[result objectForKey:@"item"] objectForKey:@"title"]);
             [item setSigId:[[result objectForKey:@"item"] objectForKey:@"_id"]];
             [item setTitle:[[result objectForKey:@"item"] objectForKey:@"title"]];
             [item setUsername:[[result objectForKey:@"item"] objectForKey:@"username"]];
+            [item setText:[[result objectForKey:@"item"] objectForKey:@"text"]];
             [item setCreated:[dateFormat dateFromString:[[result objectForKey:@"item"] objectForKey:@"create_ts"]]];
             [item setPoints:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"points"] integerValue]]];
             [item setNumComments:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"num_comments"] integerValue]]];
-            //[item setNumComments:[[NSNumberFormatter alloc] numberFromString:[[result objectForKey:@"item"] objectForKey:@"num_comments"]]];
-            //NSLog(@"url: %@", [[result objectForKey:@"item"] objectForKey:@"url"]);
+            [item setContentHeight:[NSNumber numberWithFloat:-1.0f]];
+            
             NSString *url = (NSString *)[[result objectForKey:@"item"] objectForKey:@"url"];
             if ((NSNull *)url == [NSNull null]) {
                 [item setUrl:@"about:blank"];

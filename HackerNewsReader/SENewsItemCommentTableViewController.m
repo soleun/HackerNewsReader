@@ -199,18 +199,33 @@ bool loadingFlag = NO;
     NSString *CellIdentifier;
     
     if ([indexPath row] == 0) {
-        CellIdentifier = @"NewsItemTopWeb";
-        
-        SENewsItemTopWebCell *cell = (SENewsItemTopWebCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if (cell == nil) {
-            // create cell
-            cell = [[SENewsItemTopWebCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        if ([[newsItem url] isEqualToString:@"about:blank"]) {
+            CellIdentifier = @"NewsItemTopText";
+            
+            SENewsItemTopWebCell *cell = (SENewsItemTopWebCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if (cell == nil) {
+                // create cell
+                cell = [[SENewsItemTopWebCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            }
+            
+            [cell loadContent:newsItem];
+            
+            return cell;
+        } else {
+            CellIdentifier = @"NewsItemTopWeb";
+            
+            SENewsItemTopTextCell *cell = (SENewsItemTopTextCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if (cell == nil) {
+                // create cell
+                cell = [[SENewsItemTopTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            }
+            
+            [cell loadContent:newsItem];
+            
+            return cell;
         }
-        
-        [cell loadContent:newsItem];
-        
-        return cell;
     } else if ([comments count] == 0 || !comments) {
         CellIdentifier = @"RegularTableCell";
         
@@ -260,7 +275,11 @@ bool loadingFlag = NO;
     CGFloat height;
     
     if ([indexPath row] == 0) {
-        height = 200.0f;
+        if ([[newsItem url] isEqualToString:@"about:blank"] && [[newsItem contentHeight] floatValue] > -1) {
+            height = [[newsItem contentHeight] floatValue] + 22.0f;
+        } else {
+            height = 200.0f;
+        }
     } else if ([comments count] == 0 || !comments) {
         height = 44.0f;
     } else {
