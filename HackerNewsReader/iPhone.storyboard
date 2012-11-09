@@ -321,11 +321,32 @@
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rDA-oo-aqa">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iON-uT-3bW">
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8aR-zA-9Rv"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R25-fy-wue">
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.70000000000000007" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="R25-fy-wue" firstAttribute="centerX" secondItem="8aR-zA-9Rv" secondAttribute="centerX" type="default" id="F9g-gD-fxn"/>
+                                    <constraint firstItem="8aR-zA-9Rv" firstAttribute="centerX" secondItem="iON-uT-3bW" secondAttribute="centerX" type="default" id="HZO-Ns-AWv"/>
+                                    <constraint firstItem="8aR-zA-9Rv" firstAttribute="top" secondItem="iON-uT-3bW" secondAttribute="top" constant="196" id="O1E-rp-drX"/>
+                                    <constraint firstItem="R25-fy-wue" firstAttribute="top" secondItem="8aR-zA-9Rv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="e2j-Rg-SZa"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="iON-uT-3bW" firstAttribute="trailing" secondItem="7W4-x6-bgd" secondAttribute="trailing" type="default" id="0v5-ts-iK9"/>
                             <constraint firstItem="rDA-oo-aqa" firstAttribute="top" secondItem="7W4-x6-bgd" secondAttribute="top" type="default" id="1gR-OD-S8h"/>
+                            <constraint firstItem="iON-uT-3bW" firstAttribute="bottom" secondItem="7W4-x6-bgd" secondAttribute="bottom" type="default" id="46s-DS-Cby"/>
+                            <constraint firstItem="iON-uT-3bW" firstAttribute="leading" secondItem="7W4-x6-bgd" secondAttribute="leading" type="default" id="Eoa-zc-s31"/>
                             <constraint firstItem="rDA-oo-aqa" firstAttribute="leading" secondItem="7W4-x6-bgd" secondAttribute="leading" type="default" id="ONo-Jw-q0M"/>
+                            <constraint firstItem="iON-uT-3bW" firstAttribute="top" secondItem="7W4-x6-bgd" secondAttribute="top" type="default" id="U8L-4R-IYc"/>
                             <constraint firstItem="rDA-oo-aqa" firstAttribute="bottom" secondItem="7W4-x6-bgd" secondAttribute="bottom" type="default" id="gF3-Us-kOg"/>
                             <constraint firstItem="rDA-oo-aqa" firstAttribute="trailing" secondItem="7W4-x6-bgd" secondAttribute="trailing" type="default" id="uCD-Fe-GsG"/>
                         </constraints>
@@ -335,6 +356,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="currentNewsItemWebView" destination="rDA-oo-aqa" id="4Xp-KV-N0i"/>
+                        <outlet property="loadingIndicator" destination="8aR-zA-9Rv" id="v4n-Wi-0pd"/>
+                        <outlet property="loadingLabel" destination="R25-fy-wue" id="7df-vP-lN0"/>
+                        <outlet property="loadingView" destination="iON-uT-3bW" id="rW7-WM-TFp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COZ-jC-qM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,6 +372,9 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="NSMutableArray" superclassName="NSArray">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSMutableArray.h"/>
         </class>
         <class className="SEFrontNavigationTopViewController" superclassName="UINavigationController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SEFrontNavigationTopViewController.h"/>
@@ -363,6 +390,7 @@
             <relationships>
                 <relationship kind="outlet" name="commentView" candidateClass="UIWebView"/>
                 <relationship kind="outlet" name="newsItemCommentsArray" candidateClass="NSMutableArray"/>
+                <relationship kind="outlet" name="replyIconView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="timeAuthorLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -415,6 +443,9 @@
             <relationships>
                 <relationship kind="action" name="refreshWebView:"/>
                 <relationship kind="outlet" name="currentNewsItemWebView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="loadingIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="loadingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="UIRefreshControl" superclassName="UIControl">

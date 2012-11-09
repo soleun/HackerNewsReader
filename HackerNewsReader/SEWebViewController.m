@@ -15,6 +15,9 @@
 @implementation SEWebViewController
 
 @synthesize newsItem, currentNewsItemWebView, receivedData, urlRequest;
+@synthesize loadingView = _loadingView;
+@synthesize loadingIndicator = _loadingIndicator;
+@synthesize loadingLabel = _loadingLabel;
 
 - (void)loadCacheData:(NSData *)data
 {
@@ -35,6 +38,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [[self loadingView] setAlpha:1];
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc]
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                        target:self action:@selector(refreshWebView:)];
@@ -61,6 +65,7 @@
     
     if (response) {
         [self loadCacheData:[response data]];
+        [[self loadingView] setAlpha:0];
     } else {
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
         
@@ -83,6 +88,7 @@
 - (IBAction)refreshWebView:(id)sender
 {
     NSLog(@"Refreshed!");
+    [[self loadingView] setAlpha:1];
     
     NSURL *url = [[NSURL alloc] initWithString:[newsItem url]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url
@@ -131,6 +137,7 @@
     NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
     
     [self loadCacheData:receivedData];
+    [[self loadingView] setAlpha:0];
 }
 
 @end

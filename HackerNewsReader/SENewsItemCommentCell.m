@@ -60,8 +60,6 @@ const CGFloat paddingWidth = 15.0f;
         replyIconView = [self tintImage:@"reply.png" withColor:[UIColor grayColor] withSize:CGSizeMake(12.0f, 12.0f)];
         
         [self addSubview:replyIconView];
-        
-        NSLog(@"%f", commentView.frame.size.height);
     }
 }
 

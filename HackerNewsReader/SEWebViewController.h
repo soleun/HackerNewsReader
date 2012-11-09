@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIWebView *currentNewsItemWebView;
 @property (nonatomic, strong) NSMutableData *receivedData;
 @property (nonatomic, strong) NSURLRequest *urlRequest;
+@property (weak, nonatomic) IBOutlet UIView *loadingView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *loadingLabel;
 
 - (IBAction)refreshWebView:(id)sender;
 
