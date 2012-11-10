@@ -144,8 +144,9 @@ NSMutableArray *newsItems;
         
         newsItems = [[NSMutableArray alloc] init];
         
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"yyyy-MM-dd'T'hh:mm:ss'Z'"];
+        NSDateFormatter *dateFormatUTC = [[NSDateFormatter alloc] init];
+        [dateFormatUTC setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+        [dateFormatUTC setDateFormat:@"yyyy-MM-dd'T'hh:mm:ss'Z'"];
         
         SENewsItem *item;
         for (NSDictionary* result in results) {
@@ -154,7 +155,7 @@ NSMutableArray *newsItems;
             [item setTitle:[[result objectForKey:@"item"] objectForKey:@"title"]];
             [item setUsername:[[result objectForKey:@"item"] objectForKey:@"username"]];
             [item setText:[[result objectForKey:@"item"] objectForKey:@"text"]];
-            [item setCreated:[dateFormat dateFromString:[[result objectForKey:@"item"] objectForKey:@"create_ts"]]];
+            [item setCreated:[dateFormatUTC dateFromString:[[result objectForKey:@"item"] objectForKey:@"create_ts"]]];
             [item setPoints:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"points"] integerValue]]];
             [item setNumComments:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"num_comments"] integerValue]]];
             [item setContentHeight:[NSNumber numberWithFloat:-1.0f]];
@@ -165,6 +166,8 @@ NSMutableArray *newsItems;
             } else {
                 [item setUrl:url];
             }
+            
+            NSLog(@"%@ : %@", [item title], [item created]);
             
             [newsItems addObject:item];
         }

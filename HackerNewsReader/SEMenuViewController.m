@@ -44,10 +44,10 @@
                                @"Front Page", @"name", @"http://api.thriftdb.com/api.hnsearch.com/items/_search?limit=30&filter[fields][type]=submission&sortby=product(points,pow(2,div(div(ms(create_ts,NOW),3600000),1)))+desc", @"url", @"FrontNavigationTop", @"storyboardId", nil];
     
     NSDictionary *newPage = [NSDictionary dictionaryWithObjectsAndKeys:
-                             @"New", @"name", @"http://api.thriftdb.com/api.hnsearch.com/items/_search?limit=30&filter[fields][type]=submission&sortby=create_ts+asc", @"url", @"FrontNavigationTop", @"storyboardId", nil];
+                             @"New", @"name", @"http://api.thriftdb.com/api.hnsearch.com/items/_search?limit=30&filter[fields][type]=submission&sortby=create_ts+desc", @"url", @"FrontNavigationTop", @"storyboardId", nil];
     
     NSDictionary *askPage = [NSDictionary dictionaryWithObjectsAndKeys:
-                             @"Ask", @"name", @"http://api.thriftdb.com/api.hnsearch.com/items/_search?limit=30&filter[fields][type]=submission&filter[queries][]=-url:http*&sortby=create_ts+asc", @"url", @"FrontNavigationTop", @"storyboardId", nil];
+                             @"Ask", @"name", @"http://api.thriftdb.com/api.hnsearch.com/items/_search?limit=30&filter[fields][type]=submission&filter[queries][]=-url:http*&sortby=create_ts+desc", @"url", @"FrontNavigationTop", @"storyboardId", nil];
     
     self.menuItems = [NSArray arrayWithObjects:frontPage, newPage, askPage, nil];
     currentMenuItem = frontPage;
