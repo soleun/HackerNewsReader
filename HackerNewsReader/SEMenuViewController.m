@@ -73,9 +73,24 @@
     if ([indexPath row] == 0) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"appHeader"];
         
-        [[cell textLabel] setFont:[UIFont fontWithName:@"Roboto-Regular" size:20.0f]];
-        [[cell textLabel] setTextColor:[UIColor orangeColor]];
-        [[cell textLabel] setText:@"Hacker News Reader"];
+        UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 44.0f)];
+        [titleView setBackgroundColor:[UIColor colorWithRed:(227.0f/255) green:(93.0f/255) blue:(44.0f/255) alpha:1]];
+        
+        UIImageView *hnLogoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_sm.png"]];
+        [hnLogoImageView setFrame:CGRectMake(5.0f, 2.0f, 40.0f, 40.0f)];
+        
+        [titleView addSubview:hnLogoImageView];
+        
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0f, 0, 260.0f, 44.0f)];
+        [titleLabel setBackgroundColor:[UIColor colorWithRed:(227.0f/255) green:(93.0f/255) blue:(44.0f/255) alpha:1]];
+        [titleLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:20.0f]];
+        [titleLabel setTextColor:[UIColor whiteColor]];
+        [titleLabel setText:@"Hacker News Reader"];
+        
+        [titleView addSubview:titleLabel];
+        
+        [cell addSubview:titleView];
+        
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     } else {
         NSString *cellIdentifier = @"MenuItemCell";

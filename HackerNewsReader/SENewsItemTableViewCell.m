@@ -46,16 +46,20 @@ static CGFloat vGap = 2;
 
 - (void)layoutSubviews
 {
-    UIColor *contentColor = [UIColor colorWithRed:(176.0f/255) green:(106.0f/255) blue:(6.0f/255) alpha:1];
-    UIColor *bgColor = [UIColor colorWithRed:(239.0f/255) green:(223.0f/255) blue:(193.0f/255) alpha:1];
-    UIFont *contentFont = [UIFont fontWithName:@"Roboto-Regular" size:14.0f];
+    //UIColor *contentColor = [UIColor colorWithRed:(176.0f/255) green:(106.0f/255) blue:(6.0f/255) alpha:1];
+    //UIColor *bgColor = [UIColor colorWithRed:(239.0f/255) green:(223.0f/255) blue:(193.0f/255) alpha:1];
+    UIColor *contentColor = [UIColor colorWithWhite:0.4f alpha:1];
+    UIColor *iconColor = [UIColor colorWithWhite:0.8f alpha:1];
+    UIColor *bgColor = [UIColor colorWithWhite:0.9f alpha:1];
+    UIFont *contentFont = [UIFont fontWithName:@"Roboto-Light" size:14.0f];
     UIFont *timeAuthorFont = [UIFont fontWithName:@"Roboto-Light" size:12.0f];
     
     // 242, 175, 79
-    [self setBackgroundColor:[UIColor colorWithRed:(242.0f/255) green:(175.0f/255) blue:(79.0f/255) alpha:1]];
+    //[self setBackgroundColor:[UIColor colorWithRed:(242.0f/255) green:(175.0f/255) blue:(79.0f/255) alpha:1]];
+    [self setBackgroundColor:[UIColor colorWithWhite:0.8f alpha:1]];
     
     [[self titleLabel] setFont:[UIFont fontWithName:@"Roboto-Light" size:18.0f]];
-    [[self titleLabel] setTextColor:[UIColor colorWithWhite:0.2 alpha:1]];
+    [[self titleLabel] setTextColor:[UIColor colorWithRed:(227.0f/255) green:(93.0f/255) blue:(44.0f/255) alpha:1]];
     [[self titleLabel] setText:[newsItem title]];
     [[self titleLabel] setLineBreakMode:NSLineBreakByWordWrapping];
     [[self titleLabel] sizeToFit];
@@ -115,8 +119,8 @@ static CGFloat vGap = 2;
         dummyView = [[UIView alloc] initWithFrame:CGRectMake(0, commentLabelHeight, 3, 3)];
         [dummyView setBackgroundColor:bgColor];
         
-        pointIconView = [self tintImage:@"point.png" withColor:contentColor withSize:CGSizeMake(iconSize, iconSize)];
-        commentIconView = [self tintImage:@"comment.png" withColor:contentColor withSize:CGSizeMake(iconSize, iconSize)];
+        pointIconView = [self tintImage:@"point.png" withColor:iconColor withSize:CGSizeMake(iconSize, iconSize)];
+        commentIconView = [self tintImage:@"comment.png" withColor:iconColor withSize:CGSizeMake(iconSize, iconSize)];
         
         [pointCommentView addSubview:pointIconView];
         [pointCommentView addSubview:commentIconView];

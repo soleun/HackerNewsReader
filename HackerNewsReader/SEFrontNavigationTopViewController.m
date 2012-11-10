@@ -41,7 +41,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.navigationBar.tintColor = [UIColor colorWithRed:(133.0f/255) green:(63.0f/255) blue:(0.0f/255) alpha:0.5];
+    self.navigationBar.tintColor = [UIColor colorWithRed:(227.0f/255) green:(93.0f/255) blue:(44.0f/255) alpha:1];
 }
 
 - (BOOL) shouldAutorotate

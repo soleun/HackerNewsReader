@@ -86,7 +86,7 @@ static CGFloat vGap = 2;
     [self loadWebView];
     
     [[self titleTextView] setFont:[UIFont fontWithName:@"Roboto-Light" size:24.0f]];
-    [[self titleTextView] setTextColor:[UIColor orangeColor]];
+    [[self titleTextView] setTextColor:[UIColor colorWithRed:(227.0f/255) green:(93.0f/255) blue:(44.0f/255) alpha:1]];
     [[[self titleTextView] layer] setShadowColor:[[UIColor blackColor] CGColor]];
     [[[self titleTextView] layer] setShadowOffset:CGSizeMake(0.0, 1)];
     [[[self titleTextView] layer] setShadowOpacity:1.0f];
@@ -96,9 +96,10 @@ static CGFloat vGap = 2;
 
 - (void)layoutSubviews
 {
-    UIColor *contentColor = [UIColor colorWithRed:(176.0f/255) green:(106.0f/255) blue:(6.0f/255) alpha:1];
-    UIColor *bgColor = [UIColor colorWithRed:(239.0f/255) green:(223.0f/255) blue:(193.0f/255) alpha:1];
-    UIFont *contentFont = [UIFont fontWithName:@"Roboto-Regular" size:14.0f];
+    UIColor *contentColor = [UIColor colorWithWhite:0.4f alpha:1];
+    UIColor *iconColor = [UIColor colorWithWhite:0.8f alpha:1];
+    UIColor *bgColor = [UIColor colorWithWhite:0.9f alpha:1];
+    UIFont *contentFont = [UIFont fontWithName:@"Roboto-Light" size:14.0f];
     UIFont *timeAuthorFont = [UIFont fontWithName:@"Roboto-Light" size:12.0f];
     
     [[self timeAuthorLabel] setFont:timeAuthorFont];
@@ -146,8 +147,8 @@ static CGFloat vGap = 2;
         dummyView = [[UIView alloc] initWithFrame:CGRectMake(0, commentLabelHeight, 3, 3)];
         [dummyView setBackgroundColor:bgColor];
         
-        pointIconView = [self tintImage:@"point.png" withColor:contentColor withSize:CGSizeMake(iconSize, iconSize)];
-        commentIconView = [self tintImage:@"comment.png" withColor:contentColor withSize:CGSizeMake(iconSize, iconSize)];
+        pointIconView = [self tintImage:@"point.png" withColor:iconColor withSize:CGSizeMake(iconSize, iconSize)];
+        commentIconView = [self tintImage:@"comment.png" withColor:iconColor withSize:CGSizeMake(iconSize, iconSize)];
         
         [pointCommentView addSubview:pointIconView];
         [pointCommentView addSubview:commentIconView];
