@@ -38,8 +38,6 @@ static CGFloat vGap = 2;
     webView.userInteractionEnabled = false;
     webView.multipleTouchEnabled = false;
     
-    NSLog(@"NSURLCache ::::: %i", [[NSURLCache sharedURLCache] currentMemoryUsage]);
-    
     //URLRequest
     NSURL *url = [[NSURL alloc] initWithString:[newsItem url]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url
@@ -201,7 +199,6 @@ static CGFloat vGap = 2;
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)c
                   willCacheResponse:(NSCachedURLResponse *)response {
-    NSLog(@"Will Cache Response %@", response);
 	
 	NSURLCache *cache = [NSURLCache sharedURLCache];
 	[cache storeCachedResponse:response forRequest:urlRequest];
@@ -230,7 +227,6 @@ static CGFloat vGap = 2;
 {
     // do something with the data
     // receivedData is declared as a method instance elsewhere
-    NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
     
     [self loadCacheData:receivedData];
     [[self loadingIndicator] setAlpha:0.0f];

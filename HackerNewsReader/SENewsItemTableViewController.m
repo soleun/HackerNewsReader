@@ -132,7 +132,6 @@ NSMutableArray *newsItems;
     NSString *json = [NSString stringWithContentsOfURL:url
                                               encoding:NSASCIIStringEncoding
                                                  error:&error];
-    //NSLog(@"\nJSON: %@ \n Error: %@", json, error);
     
     if(!error) {
         NSData *jsonData = [json dataUsingEncoding:NSASCIIStringEncoding];
@@ -166,8 +165,6 @@ NSMutableArray *newsItems;
             } else {
                 [item setUrl:url];
             }
-            
-            NSLog(@"%@ : %@", [item title], [item created]);
             
             [newsItems addObject:item];
         }

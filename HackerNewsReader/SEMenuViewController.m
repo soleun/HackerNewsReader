@@ -109,7 +109,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    NSLog(@"count:%d", self.menuItems.count);
     return self.menuItems.count + 2;
 }
 

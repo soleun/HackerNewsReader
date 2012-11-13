@@ -26,7 +26,6 @@
     NSString * prettyTimestamp;
     
     float delta = [created timeIntervalSinceNow];
-    //NSLog(@"%@, %f", created, delta);
     
     if (delta < 60) {
         prettyTimestamp = @"just now";

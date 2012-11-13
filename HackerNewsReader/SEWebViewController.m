@@ -53,8 +53,6 @@
     
     [[self navigationItem] setTitleView:navTitle];
     
-    NSLog(@"NSURLCache ::::: %i", [[NSURLCache sharedURLCache] currentMemoryUsage]);
-    
     //URLRequest
     NSURL *url = [[NSURL alloc] initWithString:[newsItem url]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url
@@ -87,7 +85,6 @@
 
 - (IBAction)refreshWebView:(id)sender
 {
-    NSLog(@"Refreshed!");
     [[self loadingView] setAlpha:1];
     
     NSURL *url = [[NSURL alloc] initWithString:[newsItem url]];
@@ -122,11 +119,6 @@
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    //SEAppDelegate *appDelegate = (SEAppDelegate *)[[UIApplication sharedApplication] delegate];
-    //[[appDelegate webCacheDictionary] setObject:data forKey:[newsItem url]];
-    
-    //NSLog(@"webCacheDictionary : %@", [appDelegate webCacheDictionary]);
-    
     [receivedData appendData:data];
 }
 
@@ -134,7 +126,6 @@
 {
     // do something with the data
     // receivedData is declared as a method instance elsewhere
-    NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
     
     [self loadCacheData:receivedData];
     [[self loadingView] setAlpha:0];
