@@ -7,6 +7,7 @@
 //
 
 #import "SENewsItemTopWebCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation SENewsItemTopWebCell
 
