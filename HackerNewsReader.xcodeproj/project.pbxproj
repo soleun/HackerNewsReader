@@ -79,7 +79,7 @@
 		A63E60C3164E316B006ECEDF /* icon_sm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_sm@2x.png"; path = "../../../../Desktop/icon_sm@2x.png"; sourceTree = "<group>"; };
 		A64D3AE5163D10D600410239 /* SENewsItemComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemComment.h; sourceTree = "<group>"; };
 		A64D3AE6163D10D600410239 /* SENewsItemComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemComment.m; sourceTree = "<group>"; };
-		A68617EC162B87A900090B71 /* HackerNewsReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNewsReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A68617EC162B87A900090B71 /* HNBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HNBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68617F0162B87A900090B71 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A68617F2162B87A900090B71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A68617F4162B87A900090B71 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -173,7 +173,7 @@
 		A68617ED162B87A900090B71 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A68617EC162B87A900090B71 /* HackerNewsReader.app */,
+				A68617EC162B87A900090B71 /* HNBrowser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -364,7 +364,7 @@
 			);
 			name = HackerNewsReader;
 			productName = HackerNewsReader;
-			productReference = A68617EC162B87A900090B71 /* HackerNewsReader.app */;
+			productReference = A68617EC162B87A900090B71 /* HNBrowser.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -489,8 +489,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Sol Eun";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sol Eun";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -505,7 +505,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "FB6414DE-DE84-4497-AA35-0DCB5630C0DA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB6414DE-DE84-4497-AA35-0DCB5630C0DA";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -519,8 +520,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Sol Eun";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sol Eun";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -528,7 +529,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "FB6414DE-DE84-4497-AA35-0DCB5630C0DA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB6414DE-DE84-4497-AA35-0DCB5630C0DA";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -540,7 +542,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HackerNewsReader/HackerNewsReader-Prefix.pch";
 				INFOPLIST_FILE = "HackerNewsReader/HackerNewsReader-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = HNBrowser;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -551,7 +554,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HackerNewsReader/HackerNewsReader-Prefix.pch";
 				INFOPLIST_FILE = "HackerNewsReader/HackerNewsReader-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = HNBrowser;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -131,7 +131,7 @@
         [titleLabel setBackgroundColor:[UIColor colorWithRed:(227.0f/255) green:(93.0f/255) blue:(44.0f/255) alpha:1]];
         [titleLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:20.0f]];
         [titleLabel setTextColor:[UIColor whiteColor]];
-        [titleLabel setText:@"Hacker News Reader"];
+        [titleLabel setText:@"HN Browser"];
         
         [titleView addSubview:titleLabel];
         
@@ -150,7 +150,7 @@
         [aboutLabel setBackgroundColor:[UIColor clearColor]];
         [aboutLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:14.0f]];
         [aboutLabel setTextColor:[UIColor whiteColor]];
-        [aboutLabel setText:@"About Hacker News Reader"];
+        [aboutLabel setText:@"About HN Browser"];
         
         [aboutView addSubview:aboutLabel];
         
@@ -207,7 +207,7 @@
         [iconDesignerNameLabel setBackgroundColor:[UIColor clearColor]];
         [iconDesignerNameLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:14.0f]];
         [iconDesignerNameLabel setTextColor:[UIColor whiteColor]];
-        [iconDesignerNameLabel setText:@"Joel Glovier"];
+        [iconDesignerNameLabel setText:@"Joel Andrew Glovier"];
         
         [aboutView addSubview:iconDesignerNameLabel];
         
