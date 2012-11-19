@@ -7,7 +7,9 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import "SEAppDelegate.h"
 #import "SENewsItemCommentTableViewController.h"
+#import "GAI.h"
 
 @interface SENewsItemCommentTableViewController ()
 
@@ -42,6 +44,8 @@ bool loadingFlag = NO;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [((SEAppDelegate *)[UIApplication sharedApplication].delegate).tracker trackView:@"NewsItemComment Screen"];
     
     loadingFlag = YES;
     

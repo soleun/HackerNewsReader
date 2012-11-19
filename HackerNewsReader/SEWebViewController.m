@@ -7,6 +7,7 @@
 //
 
 #import "SEWebViewController.h"
+#import "GAI.h"
 
 @interface SEWebViewController ()
 
@@ -37,6 +38,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.trackedViewName = @"Web Screen";
     
     [[self loadingView] setAlpha:1];
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc]

@@ -7,6 +7,8 @@
 //
 
 #import "SEFrontNavigationTopViewController.h"
+#import "SEAppDelegate.h"
+#import "GAI.h"
 
 @interface SEFrontNavigationTopViewController ()
 
@@ -19,6 +21,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [((SEAppDelegate *)[UIApplication sharedApplication].delegate).tracker trackView:@"Menu Screen"];
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[SEMenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];

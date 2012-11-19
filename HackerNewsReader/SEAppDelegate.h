@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ECSlidingViewController.h"
+#import "GAI.h"
 
 @interface SEAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property(nonatomic, retain) id<GAITracker> tracker;
 
 @end

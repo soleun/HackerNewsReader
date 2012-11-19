@@ -16,6 +16,9 @@
 		A63E60C4164E316B006ECEDF /* icon_sm.png in Resources */ = {isa = PBXBuildFile; fileRef = A63E60C2164E316B006ECEDF /* icon_sm.png */; };
 		A63E60C5164E316B006ECEDF /* icon_sm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63E60C3164E316B006ECEDF /* icon_sm@2x.png */; };
 		A64D3AE7163D10D600410239 /* SENewsItemComment.m in Sources */ = {isa = PBXBuildFile; fileRef = A64D3AE6163D10D600410239 /* SENewsItemComment.m */; };
+		A64F09C1165A0427007C99E7 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A64F09B11659FDEA007C99E7 /* libGoogleAnalytics.a */; };
+		A64F09C3165A0518007C99E7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64F09C2165A0518007C99E7 /* CoreData.framework */; };
+		A64F09C5165A0539007C99E7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64F09C4165A0539007C99E7 /* SystemConfiguration.framework */; };
 		A68617F1162B87A900090B71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68617F0162B87A900090B71 /* UIKit.framework */; };
 		A68617F3162B87A900090B71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68617F2162B87A900090B71 /* Foundation.framework */; };
 		A68617F5162B87A900090B71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68617F4162B87A900090B71 /* CoreGraphics.framework */; };
@@ -79,6 +82,16 @@
 		A63E60C3164E316B006ECEDF /* icon_sm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_sm@2x.png"; path = "../../../../Desktop/icon_sm@2x.png"; sourceTree = "<group>"; };
 		A64D3AE5163D10D600410239 /* SENewsItemComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SENewsItemComment.h; sourceTree = "<group>"; };
 		A64D3AE6163D10D600410239 /* SENewsItemComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SENewsItemComment.m; sourceTree = "<group>"; };
+		A64F09B01659FDEA007C99E7 /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = ../../GAITracker.h; sourceTree = "<group>"; };
+		A64F09B11659FDEA007C99E7 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = ../../libGoogleAnalytics.a; sourceTree = "<group>"; };
+		A64F09B41659FE0C007C99E7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A64F09B61659FF3E007C99E7 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		A64F09BC1659FF97007C99E7 /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		A64F09BE1659FF97007C99E7 /* GAITransaction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
+		A64F09BF1659FF97007C99E7 /* GAITransactionItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
+		A64F09C0165A01F4007C99E7 /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		A64F09C2165A0518007C99E7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A64F09C4165A0539007C99E7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A68617EC162B87A900090B71 /* HNBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HNBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68617F0162B87A900090B71 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A68617F2162B87A900090B71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -151,19 +164,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A64F09C5165A0539007C99E7 /* SystemConfiguration.framework in Frameworks */,
+				A64F09C3165A0518007C99E7 /* CoreData.framework in Frameworks */,
 				A6861822162B8CFD00090B71 /* QuartzCore.framework in Frameworks */,
 				A68617F1162B87A900090B71 /* UIKit.framework in Frameworks */,
 				A68617F3162B87A900090B71 /* Foundation.framework in Frameworks */,
 				A68617F5162B87A900090B71 /* CoreGraphics.framework in Frameworks */,
+				A64F09C1165A0427007C99E7 /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A64F09B31659FDF2007C99E7 /* Google Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				A64F09C0165A01F4007C99E7 /* GAI.h */,
+				A64F09B01659FDEA007C99E7 /* GAITracker.h */,
+				A64F09BC1659FF97007C99E7 /* GAITrackedViewController.h */,
+				A64F09BE1659FF97007C99E7 /* GAITransaction.h */,
+				A64F09BF1659FF97007C99E7 /* GAITransactionItem.h */,
+				A64F09B11659FDEA007C99E7 /* libGoogleAnalytics.a */,
+			);
+			name = "Google Analytics";
+			sourceTree = "<group>";
+		};
 		A68617E1162B87A900090B71 = {
 			isa = PBXGroup;
 			children = (
+				A64F09C4165A0539007C99E7 /* SystemConfiguration.framework */,
+				A64F09C2165A0518007C99E7 /* CoreData.framework */,
 				A68617F6162B87A900090B71 /* HackerNewsReader */,
 				A68617EF162B87A900090B71 /* Frameworks */,
 				A68617ED162B87A900090B71 /* Products */,
@@ -181,6 +212,8 @@
 		A68617EF162B87A900090B71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A64F09B61659FF3E007C99E7 /* libsqlite3.0.dylib */,
+				A64F09B41659FE0C007C99E7 /* CFNetwork.framework */,
 				A6861821162B8CFD00090B71 /* QuartzCore.framework */,
 				A68617F0162B87A900090B71 /* UIKit.framework */,
 				A68617F2162B87A900090B71 /* Foundation.framework */,
@@ -194,9 +227,9 @@
 			children = (
 				A6861819162B881700090B71 /* iPhone.storyboard */,
 				A6861815162B87D500090B71 /* Controllers */,
-				A686180D162B87CE00090B71 /* Vendor */,
 				A68617FF162B87A900090B71 /* SEAppDelegate.h */,
 				A6861800162B87A900090B71 /* SEAppDelegate.m */,
+				A686180D162B87CE00090B71 /* Vendor */,
 				A68617F7162B87A900090B71 /* Supporting Files */,
 			);
 			path = HackerNewsReader;
@@ -226,6 +259,7 @@
 		A686180D162B87CE00090B71 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				A64F09B31659FDF2007C99E7 /* Google Analytics */,
 				A686180E162B87CE00090B71 /* ECSlidingViewController */,
 			);
 			path = Vendor;
@@ -543,6 +577,10 @@
 				GCC_PREFIX_HEADER = "HackerNewsReader/HackerNewsReader-Prefix.pch";
 				INFOPLIST_FILE = "HackerNewsReader/HackerNewsReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = HNBrowser;
 				WRAPPER_EXTENSION = app;
 			};
@@ -555,6 +593,10 @@
 				GCC_PREFIX_HEADER = "HackerNewsReader/HackerNewsReader-Prefix.pch";
 				INFOPLIST_FILE = "HackerNewsReader/HackerNewsReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = HNBrowser;
 				WRAPPER_EXTENSION = app;
 			};

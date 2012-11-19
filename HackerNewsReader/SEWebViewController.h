@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 #import "SENewsItemCommentTableViewController.h"
 #import "SENewsItem.h"
 #import "SENewsItemTopWebCell.h"
 
-@interface SEWebViewController : UIViewController <NSURLConnectionDelegate>
+@interface SEWebViewController : GAITrackedViewController <NSURLConnectionDelegate>
 
 @property (nonatomic, strong) SENewsItem *newsItem;
 @property (weak, nonatomic) IBOutlet UIWebView *currentNewsItemWebView;

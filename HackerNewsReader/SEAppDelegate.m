@@ -7,10 +7,16 @@
 //
 
 #import "SEAppDelegate.h"
+#import "GAI.h"
+
+static NSString *const kTrackingId = @"UA-36427789-1";
+// Dispatch period in seconds.
+static const NSInteger kDispatchPeriodSeconds = 10;
 
 @implementation SEAppDelegate
 
 @synthesize window = _window;
+@synthesize tracker = tracker_;
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
@@ -28,6 +34,15 @@
     }
     
     [slidingViewController setTopViewController:[storyboard instantiateViewControllerWithIdentifier:@"FrontNavigationTop"]];
+    
+    // Optional: automatically track uncaught exceptions with Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    // Optional: set debug to YES for extra debugging information.
+    [GAI sharedInstance].debug = YES;
+    // Create tracker instance.
+    self.tracker = [[GAI sharedInstance] trackerWithTrackingId:kTrackingId];
     
     // NSURLCache Settings
     int cacheSizeMemory = 4*1024*1024; // 4MB

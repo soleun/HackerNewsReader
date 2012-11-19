@@ -7,6 +7,7 @@
 //
 
 #import "SENewsItemTableViewController.h"
+#import "GAI.h"
 
 @interface SENewsItemTableViewController ()
 
@@ -47,6 +48,8 @@ NSMutableArray *newsItems;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [((SEAppDelegate *)[UIApplication sharedApplication].delegate).tracker trackView:@"NewsItem Screen"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
