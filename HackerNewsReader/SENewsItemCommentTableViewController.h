@@ -20,4 +20,6 @@
 @property (nonatomic, strong) SENewsItem *newsItem;
 @property (nonatomic, strong) NSMutableArray *comments;
 
+- (IBAction)showShareSheet:(id)sender;
+
 @end

@@ -74,23 +74,6 @@ NSMutableArray *newsItems;
     [navTitle sizeToFit];
     
     [[self navigationItem] setTitleView:navTitle];
-    
-    
-    // TODO: menu icon
-    /*UIImage *menuIconImage = [UIImage imageNamed:@"menu.png"];
-    UIImageView *menuIconImageView = [[UIImageView alloc] initWithImage:menuIconImage];
-    [menuIconImageView setFrame:CGRectMake(0, 0, 16.0f, 16.0f)];
-    
-    UIView *overlay = [[UIView alloc] initWithFrame:[menuIconImageView frame]];
-    
-    UIImageView *maskImageView = [[UIImageView alloc] initWithImage:menuIconImage];
-    [maskImageView setFrame:[overlay bounds]];
-    
-    [[overlay layer] setMask:[maskImageView layer]];
-    
-    [overlay setBackgroundColor:[UIColor redColor]];
-    
-    [self setMenuButton:[[UIBarButtonItem alloc] initWithCustomView:menuIconImageView]];*/
 }
 
 - (void)didReceiveMemoryWarning
@@ -153,6 +136,7 @@ NSMutableArray *newsItems;
         SENewsItem *item;
         for (NSDictionary* result in results) {
             item = [[SENewsItem alloc] init];
+            [item setItemId:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"id"] integerValue]]];
             [item setSigId:[[result objectForKey:@"item"] objectForKey:@"_id"]];
             [item setTitle:[[result objectForKey:@"item"] objectForKey:@"title"]];
             [item setUsername:[[result objectForKey:@"item"] objectForKey:@"username"]];

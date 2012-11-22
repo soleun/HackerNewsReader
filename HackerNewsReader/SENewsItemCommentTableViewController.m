@@ -65,6 +65,12 @@ bool loadingFlag = NO;
     
     [[self navigationItem] setTitleView:navTitle];
     
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                      target:self action:@selector(showShareSheet:)];
+    
+    self.navigationItem.rightBarButtonItem = shareButton;
+    
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self refreshTable];
         loadingFlag = NO;
@@ -111,6 +117,29 @@ bool loadingFlag = NO;
     }
     
     return finalArray;
+}
+
+- (IBAction)showShareSheet:(id)sender
+{
+    NSMutableArray *activityItems = [[NSMutableArray alloc] initWithArray:@[[newsItem title]]];
+    
+    //[activityItems addObject:[newsItem itemId]];
+    
+    if ([newsItem hasUrl]) {
+        [activityItems addObject:[newsItem url]];
+    }
+    
+    NSString *discussionURL = [[NSString alloc] initWithFormat:@"Read comments by visiting http://news.ycombinator.com/item?id=%d", [[newsItem itemId] intValue]];
+    
+    [activityItems addObject:discussionURL];
+    
+    UIActivityViewController *activityController =
+    [[UIActivityViewController alloc]
+     initWithActivityItems:activityItems
+     applicationActivities:nil];
+    
+    [self presentViewController:activityController
+                       animated:YES completion:nil];
 }
 
 - (void)refreshTable
