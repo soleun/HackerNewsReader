@@ -53,6 +53,8 @@
 		A68618691636547200090B71 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686185316364C3E00090B71 /* Roboto-Thin.ttf */; };
 		A686186A1636547200090B71 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A686185416364C3E00090B71 /* Roboto-ThinItalic.ttf */; };
 		A686186C163657F300090B71 /* iphone_retina_3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = A686186B163657F300090B71 /* iphone_retina_3.5.png */; };
+		A688B4F2165F5C6900D4E1B5 /* icon_sm.png in Resources */ = {isa = PBXBuildFile; fileRef = A688B4F0165F5C6900D4E1B5 /* icon_sm.png */; };
+		A688B4F3165F5C6900D4E1B5 /* icon_sm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A688B4F1165F5C6900D4E1B5 /* icon_sm@2x.png */; };
 		A6C2E6DF164B808200E0CC81 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C2E6DD164B808200E0CC81 /* menu.png */; };
 		A6C2E6E0164B808200E0CC81 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C2E6DE164B808200E0CC81 /* menu@2x.png */; };
 		A6C2E6E3164B897F00E0CC81 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C2E6E1164B897F00E0CC81 /* point.png */; };
@@ -139,6 +141,8 @@
 		A686185316364C3E00090B71 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		A686185416364C3E00090B71 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		A686186B163657F300090B71 /* iphone_retina_3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone_retina_3.5.png; sourceTree = "<group>"; };
+		A688B4F0165F5C6900D4E1B5 /* icon_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sm.png; sourceTree = "<group>"; };
+		A688B4F1165F5C6900D4E1B5 /* icon_sm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_sm@2x.png"; sourceTree = "<group>"; };
 		A6C2E6DD164B808200E0CC81 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		A6C2E6DE164B808200E0CC81 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		A6C2E6E1164B897F00E0CC81 /* point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point.png; sourceTree = "<group>"; };
@@ -234,6 +238,8 @@
 		A68617F7162B87A900090B71 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A688B4F0165F5C6900D4E1B5 /* icon_sm.png */,
+				A688B4F1165F5C6900D4E1B5 /* icon_sm@2x.png */,
 				A68D55D1164B7E2600BEAB97 /* Icons */,
 				A68D55CF164B7E1800BEAB97 /* Fonts */,
 				A63E60BA164E0B5A006ECEDF /* icon@2x.png */,
@@ -463,6 +469,8 @@
 				A6CA6FFA1652046C00097497 /* twitter@2x.png in Resources */,
 				A6CA6FFD1652047700097497 /* home.png in Resources */,
 				A6CA6FFE1652047700097497 /* home@2x.png in Resources */,
+				A688B4F2165F5C6900D4E1B5 /* icon_sm.png in Resources */,
+				A688B4F3165F5C6900D4E1B5 /* icon_sm@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,8 +539,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "A5993428-7EC9-4850-A190-F16DF0D6B14B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A5993428-7EC9-4850-A190-F16DF0D6B14B";
+				PROVISIONING_PROFILE = "FB6414DE-DE84-4497-AA35-0DCB5630C0DA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB6414DE-DE84-4497-AA35-0DCB5630C0DA";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -555,8 +563,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "A5993428-7EC9-4850-A190-F16DF0D6B14B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A5993428-7EC9-4850-A190-F16DF0D6B14B";
+				PROVISIONING_PROFILE = "FB6414DE-DE84-4497-AA35-0DCB5630C0DA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB6414DE-DE84-4497-AA35-0DCB5630C0DA";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
