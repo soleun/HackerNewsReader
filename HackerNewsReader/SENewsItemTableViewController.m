@@ -107,7 +107,7 @@ NSMutableArray *newsItems;
     
     if ((NSNull *)menuItem == [NSNull null] || menuItem == nil) {
         menuItem = [NSDictionary dictionaryWithObjectsAndKeys:
-                    @"Front Page", @"name", @"http://api.thriftdb.com/api.hnsearch.com/items/_search?limit=30&filter[fields][type]=submission&sortby=product(points,pow(2,div(div(ms(create_ts,NOW),3600000),1)))%20desc", @"url", @"FrontNavigationTop", @"storyboardId", nil];
+                    @"Front Page", @"name", @"http://api.thriftdb.com/api.hnsearch.com/items/_search?limit=30&filter[fields][type]=submission&sortby=product(points,pow(2,div(div(ms(create_ts,NOW),3600000),1)))+desc", @"url", @"FrontNavigationTop", @"storyboardId", nil];
     }
     
     
@@ -129,9 +129,9 @@ NSMutableArray *newsItems;
         
         newsItems = [[NSMutableArray alloc] init];
         
-        NSDateFormatter *dateFormatUTC = [[NSDateFormatter alloc] init];
-        [dateFormatUTC setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-        [dateFormatUTC setDateFormat:@"yyyy-MM-dd'T'hh:mm:ss'Z'"];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+        [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
         
         SENewsItem *item;
         for (NSDictionary* result in results) {
@@ -141,7 +141,7 @@ NSMutableArray *newsItems;
             [item setTitle:[[result objectForKey:@"item"] objectForKey:@"title"]];
             [item setUsername:[[result objectForKey:@"item"] objectForKey:@"username"]];
             [item setText:[[result objectForKey:@"item"] objectForKey:@"text"]];
-            [item setCreated:[dateFormatUTC dateFromString:[[result objectForKey:@"item"] objectForKey:@"create_ts"]]];
+            [item setCreated:[dateFormat dateFromString:[[result objectForKey:@"item"] objectForKey:@"create_ts"]]];
             [item setPoints:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"points"] integerValue]]];
             [item setNumComments:[NSNumber numberWithInt:[[[result objectForKey:@"item"] objectForKey:@"num_comments"] integerValue]]];
             [item setContentHeight:[NSNumber numberWithFloat:-1.0f]];

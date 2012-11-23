@@ -25,7 +25,7 @@
 {
     NSString * prettyTimestamp;
     
-    float delta = [created timeIntervalSinceNow];
+    float delta = [[NSDate date] timeIntervalSinceDate:created];
     
     if (delta < 60) {
         prettyTimestamp = @"just now";
